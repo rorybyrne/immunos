@@ -1,0 +1,43 @@
+---
+import SectionHead from "./SectionHead.astro";
+import "./NextSession.css";
+
+interface Props {
+  next: {
+    no: string;
+    title: string;
+    date: string;
+    venue: string;
+    description?: string;
+    format?: string;
+  };
+}
+
+const { next } = Astro.props;
+const label = `Edition No. ${next.no}`;
+---
+
+<section class="section-tight next-section">
+  <div class="shell">
+    <SectionHead title="Next meeting" linkLabel="Past meetings →" href="/meetings/" />
+
+    <article class="next-card">
+      <div class="next-card__edition">{label}</div>
+      <h3 class="next-card__title">{next.title}</h3>
+      {next.description && <p class="next-card__desc">{next.description}</p>}
+
+      <dl class="next-card__meta">
+        <dt>When</dt>
+        <dd>{next.date}</dd>
+        <dt>Where</dt>
+        <dd>{next.venue}</dd>
+        {next.format && (
+          <>
+            <dt>Format</dt>
+            <dd>{next.format}</dd>
+          </>
+        )}
+      </dl>
+    </article>
+  </div>
+</section>

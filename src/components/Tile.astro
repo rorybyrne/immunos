@@ -1,0 +1,45 @@
+---
+import "./Tile.css";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  blurb: string;
+  source: string;
+  href?: string;
+  thumbIdx?: number;
+  showThumb?: boolean;
+  /** Optional news-filter category. When set, the tile is tagged with
+      data-news-tile + data-category for the news page filter script. */
+  category?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  blurb,
+  source,
+  href = "#",
+  thumbIdx = 0,
+  showThumb = true,
+  category,
+} = Astro.props;
+
+const thumbVariant = `tile__thumb--v${(thumbIdx % 6) + 1}`;
+---
+
+<a
+  class="tile"
+  href={href}
+  data-news-tile={category ? "" : undefined}
+  data-category={category}
+>
+  {showThumb && <div class:list={["tile__thumb", thumbVariant]} aria-hidden="true" />}
+  <div class="tile__eyebrow">{eyebrow}</div>
+  <h3 class="tile__title">{title}</h3>
+  <p class="tile__blurb">{blurb}</p>
+  <div class="tile__byline">
+    <span>{source}</span>
+    <span class="tile__arrow">Read →</span>
+  </div>
+</a>

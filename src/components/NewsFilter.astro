@@ -1,0 +1,67 @@
+---
+import "./NewsFilter.css";
+
+interface Props {
+  categories: string[];
+  total: number;
+}
+
+const { categories, total } = Astro.props;
+const filters = ["All", ...categories];
+---
+
+<div class="news-filter" data-news-filter>
+  <span class="news-filter__label">Filed under</span>
+
+  <div class="news-filter__chips" role="tablist" aria-label="Filter by category">
+    {
+      filters.map((f, i) => (
+        <button
+          type="button"
+          class:list={["news-filter__chip", { "is-active": i === 0 }]}
+          data-filter={f}
+          role="tab"
+          aria-selected={i === 0 ? "true" : "false"}
+        >
+          {f}
+        </button>
+      ))
+    }
+  </div>
+
+  <span class="news-filter__count" data-news-count>{total} items</span>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-news-filter]");
+  if (root) {
+    const chips = root.querySelectorAll<HTMLButtonElement>(".news-filter__chip");
+    const count = root.querySelector<HTMLElement>("[data-news-count]");
+    const tiles = document.querySelectorAll<HTMLElement>("[data-news-tile]");
+    const featured = document.querySelector<HTMLElement>("[data-featured-story]");
+
+    const apply = (filter: string) => {
+      let visible = 0;
+      tiles.forEach((tile) => {
+        const cat = tile.dataset.category ?? "";
+        const show = filter === "All" || cat === filter;
+        tile.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (count) count.textContent = `${visible} items`;
+      if (featured) featured.hidden = filter !== "All";
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        chips.forEach((c) => {
+          c.classList.remove("is-active");
+          c.setAttribute("aria-selected", "false");
+        });
+        chip.classList.add("is-active");
+        chip.setAttribute("aria-selected", "true");
+        apply(chip.dataset.filter ?? "All");
+      });
+    });
+  }
+</script>

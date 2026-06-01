@@ -1,0 +1,102 @@
+/* =========================================================================
+   FeaturedStory — editor's pick on the news page. Two-up on desktop.
+   ========================================================================= */
+
+.featured-story {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 28px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  margin-bottom: var(--space-8);
+}
+
+@media (max-width: 960px) {
+  .featured-story {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* ---- Photo block (placeholder) ----------------------------------- */
+
+.featured-story__photo {
+  position: relative;
+  min-height: 320px;
+  background: linear-gradient(135deg, #FFD15C 0%, #FF6A5D 100%);
+}
+
+.featured-story__badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 6px 12px;
+  background: var(--warm-300);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-700);
+}
+
+/* ---- Body block --------------------------------------------------- */
+
+.featured-story__body {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.featured-story__eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-3);
+}
+
+.featured-story__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  font-variation-settings: "opsz" 60;
+  color: var(--ink-700);
+  text-wrap: pretty;
+}
+
+.featured-story__blurb {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg-2);
+}
+
+.featured-story__meta {
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--fg-3);
+}
+
+.featured-story__link {
+  color: var(--warm-700);
+  text-decoration: underline;
+  text-decoration-color: var(--warm-500);
+  text-underline-offset: 0.18em;
+}
+
+.featured-story__link:hover {
+  color: var(--warm-800);
+  text-decoration-color: var(--warm-700);
+}

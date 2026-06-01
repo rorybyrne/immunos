@@ -1,0 +1,40 @@
+---
+import Mark from "./Mark.astro";
+import "./Masthead.css";
+
+interface NavItem {
+  id: string;
+  label: string;
+  href: string;
+}
+
+interface Props {
+  activePage: string;
+  nav: NavItem[];
+}
+
+const { activePage, nav } = Astro.props;
+---
+
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="masthead__lockup" href="/" aria-label="ImmunOS — home">
+      <Mark size={30} class="masthead__mark" />
+      <span class="masthead__wordmark">Immun<b>OS</b></span>
+    </a>
+
+    <nav class="masthead__nav" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a
+            class:list={["masthead__nav-link", { "is-active": item.id === activePage }]}
+            href={item.href}
+            aria-current={item.id === activePage ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

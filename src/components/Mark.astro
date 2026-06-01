@@ -1,0 +1,24 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 30, class: className } = Astro.props;
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 200 200"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="ImmunOS mark"
+  role="img"
+>
+  <path d="M 100 4 A 96 96 0 0 1 196 100 L 144 100 A 44 44 0 0 0 100 56 Z" fill="#FFD05C" />
+  <path d="M 196 100 A 96 96 0 0 1 100 196 L 100 144 A 44 44 0 0 0 144 100 Z" fill="#FF685D" />
+  <path d="M 100 196 A 96 96 0 0 1 4 100 L 56 100 A 44 44 0 0 0 100 144 Z" fill="#FF8A80" />
+  <path d="M 4 100 A 96 96 0 0 1 100 4 L 100 56 A 44 44 0 0 0 56 100 Z" fill="#FF685D" />
+  <circle cx="100" cy="100" r="50" fill="#FFD05C" />
+</svg>

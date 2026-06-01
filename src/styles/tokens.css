@@ -1,0 +1,150 @@
+/* =========================================================================
+   ImmunOS — design tokens
+   Warm editorial-computational palette. Navy ink. Serif headlines.
+   Single source of truth: every page-level variable lives here.
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ---- Color · warm primaries from the ImmunOS mark ------------------- */
+  --warm-50:  #FFF6E5;
+  --warm-100: #FFEFCC;
+  --warm-200: #FFE0A0;
+  --warm-300: #FFD15C;   /* signal yellow — core mark */
+  --warm-400: #FFB37A;
+  --warm-500: #FF8B80;   /* salmon */
+  --warm-600: #FF6A5D;   /* coral — primary action */
+  --warm-700: #E54B3F;   /* deep coral */
+  --warm-800: #B33529;
+  --warm-900: #6E1F17;
+
+  /* ---- Color · navy ink ---------------------------------------------- */
+  --ink-50:  #EEF2F8;
+  --ink-100: #D9E0EC;
+  --ink-200: #A9B6CC;
+  --ink-300: #6B7B97;
+  --ink-400: #3D4E6B;
+  --ink-500: #1B304F;
+  --ink-600: #0E2347;
+  --ink-700: #00224A;   /* wordmark navy */
+  --ink-800: #001734;
+  --ink-900: #000C1F;
+
+  /* ---- Color · royal signal blue (used sparingly) -------------------- */
+  --signal-300: #8FA8F4;
+  --signal-500: #4070F0;
+  --signal-700: #2A4FBF;
+
+  /* ---- Color · paper ------------------------------------------------- */
+  --paper:        #FBF7EE;
+  --paper-deep:   #F4ECDB;
+  --paper-edge:   #E9DFC8;
+  --paper-card:   #FFFDF8;
+
+  /* ---- Semantic ------------------------------------------------------ */
+  --fg-1: var(--ink-700);
+  --fg-2: var(--ink-500);
+  --fg-3: var(--ink-400);
+  --fg-mute: var(--ink-300);
+
+  --bg-page:     var(--paper);
+  --bg-elevated: var(--paper-card);
+  --bg-section:  var(--paper-deep);
+  --bg-ink:      var(--ink-700);
+
+  --rule:        var(--paper-edge);
+  --rule-strong: var(--ink-200);
+  --rule-ink:    var(--ink-700);
+
+  --accent:        var(--warm-600);
+  --accent-hover:  var(--warm-700);
+  --accent-press:  var(--warm-800);
+
+  --link:        var(--warm-700);
+  --link-hover:  var(--warm-800);
+
+  /* ---- Spacing · 4px base ------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+  --space-48: 192px;
+
+  /* ---- Radii -------------------------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ---- Elevation · warm-tinted; never neutral grey ------------------ */
+  --shadow-xs: 0 1px 0 rgba(14, 35, 71, 0.06);
+  --shadow-sm: 0 1px 2px rgba(14, 35, 71, 0.06), 0 1px 1px rgba(14, 35, 71, 0.04);
+  --shadow-md: 0 4px 12px rgba(14, 35, 71, 0.08), 0 1px 2px rgba(14, 35, 71, 0.05);
+  --shadow-lg: 0 14px 32px rgba(14, 35, 71, 0.10), 0 2px 4px rgba(14, 35, 71, 0.06);
+  --shadow-glow-warm: 0 6px 28px rgba(255, 106, 93, 0.22);
+
+  /* ---- Motion ------------------------------------------------------- */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 380ms;
+
+  /* ---- Type families ------------------------------------------------ */
+  --font-display: "Fraunces", "Tiempos Headline", "Times New Roman", Georgia, serif;
+  --font-body:    "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ---- Type scale --------------------------------------------------- */
+  --t-eyebrow: 11px;
+  --t-meta:    13px;
+  --t-body-sm: 14px;
+  --t-body:    16px;
+  --t-body-lg: 18px;
+  --t-lede:    21px;
+  --t-h6:      16px;
+  --t-h5:      20px;
+  --t-h4:      26px;
+  --t-h3:      34px;
+  --t-h2:      48px;
+  --t-h1:      68px;
+  --t-display: 96px;
+
+  --lh-tight:   1.05;
+  --lh-snug:    1.15;
+  --lh-display: 1.08;
+  --lh-heading: 1.18;
+  --lh-body:    1.55;
+  --lh-prose:   1.65;
+  --lh-mono:    1.5;
+
+  --tr-display:    -0.02em;
+  --tr-heading:    -0.015em;
+  --tr-body:        0;
+  --tr-eyebrow:     0.14em;
+  --tr-mono-caps:   0.08em;
+
+  /* ---- Layout shell ------------------------------------------------- */
+  --shell-max: 1080px;
+  --shell-pad-desk:   32px;
+  --shell-pad-tablet: 24px;
+  --shell-pad-phone:  20px;
+
+  --section-gap-desk:   64px;
+  --section-gap-tablet: 48px;
+  --section-gap-phone:  36px;
+}

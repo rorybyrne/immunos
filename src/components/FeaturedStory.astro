@@ -1,0 +1,32 @@
+---
+import "./FeaturedStory.css";
+
+interface Props {
+  story: {
+    eyebrow: string;
+    title: string;
+    blurb: string;
+    byline: string;
+    linkLabel: string;
+    href: string;
+  };
+}
+
+const { story } = Astro.props;
+---
+
+<article class="featured-story">
+  <div class="featured-story__photo" aria-hidden="true">
+    <span class="featured-story__badge">Editor's pick this week</span>
+  </div>
+
+  <div class="featured-story__body">
+    <div class="featured-story__eyebrow">{story.eyebrow}</div>
+    <h2 class="featured-story__title">{story.title}</h2>
+    <p class="featured-story__blurb">{story.blurb}</p>
+    <div class="featured-story__meta">
+      <span>{story.byline}</span>
+      <a class="featured-story__link" href={story.href}>{story.linkLabel}</a>
+    </div>
+  </div>
+</article>

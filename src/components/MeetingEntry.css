@@ -1,0 +1,296 @@
+/* =========================================================================
+   MeetingEntry — collapsible record per edition. Uses native <details>.
+   ========================================================================= */
+
+.meeting-entry {
+  border-top: 1px solid var(--ink-700);
+}
+
+.meeting-entry--last { border-bottom: 1px solid var(--ink-700); }
+
+.meeting-entry__details {
+  /* Strip default disclosure marker, we render our own. */
+}
+
+.meeting-entry__summary {
+  list-style: none;
+  cursor: pointer;
+  padding-block: var(--space-6);
+}
+
+.meeting-entry__summary::-webkit-details-marker { display: none; }
+
+/* ---- Head row ---------------------------------------------------- */
+
+.meeting-entry__head {
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+  gap: var(--space-8);
+  align-items: baseline;
+}
+
+.meeting-entry__no {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 400;
+  font-variation-settings: "opsz" 36;
+  color: var(--ink-700);
+}
+
+.meeting-entry__head-text {
+  min-width: 0;
+}
+
+.meeting-entry__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 400;
+  font-variation-settings: "opsz" 24;
+  color: var(--ink-700);
+}
+
+.meeting-entry__head-meta {
+  margin-top: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meeting-entry__sep {
+  font-style: normal;
+  color: var(--ink-200);
+}
+
+/* ---- Toggle label (toggles via :open ancestor) ------------------- */
+
+.meeting-entry__toggle {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-3);
+  user-select: none;
+}
+
+.meeting-entry__toggle-close { display: none; }
+.meeting-entry__details[open] .meeting-entry__toggle-open { display: none; }
+.meeting-entry__details[open] .meeting-entry__toggle-close { display: inline; }
+
+/* ---- Body -------------------------------------------------------- */
+
+.meeting-entry__body {
+  padding: var(--space-2) 0 var(--space-10) 124px;
+}
+
+/* Hero figure (placeholder until real photography lands) */
+
+.meeting-entry__figure {
+  margin: 0 0 var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.meeting-entry__figure-img,
+.meeting-entry__figure-placeholder {
+  width: 100%;
+  aspect-ratio: 8 / 3;
+  object-fit: cover;
+  display: block;
+  background: var(--paper-deep);
+  filter: saturate(0.85);
+}
+
+.meeting-entry__figure-placeholder {
+  background:
+    linear-gradient(135deg, rgba(255, 209, 92, 0.7) 0%, rgba(255, 106, 93, 0.65) 100%),
+    var(--paper-deep);
+}
+
+.meeting-entry__figcaption {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--fg-3);
+}
+
+/* Grid of sections inside the body */
+
+.meeting-entry__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8) var(--space-12);
+}
+
+.meeting-entry__section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meeting-entry__label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: var(--space-1);
+}
+
+/* Speaker block */
+
+.meeting-entry__speaker-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 500;
+  font-variation-settings: "opsz" 18;
+  color: var(--ink-700);
+}
+
+.meeting-entry__speaker-role {
+  margin: 2px 0 var(--space-2);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-3);
+}
+
+.meeting-entry__speaker-bio {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg-2);
+}
+
+/* Link lists */
+
+.meeting-entry__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.meeting-entry__links li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meeting-entry__link {
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.4;
+  font-variation-settings: "opsz" 16;
+  color: var(--ink-700);
+  text-decoration: none;
+}
+
+.meeting-entry__link:hover {
+  color: var(--warm-700);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.meeting-entry__link-meta {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-3);
+}
+
+/* Provocations */
+
+.meeting-entry__provocations {
+  margin: 0;
+  padding-left: 18px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--fg-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Poll widget */
+
+.meeting-entry__poll-q {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-2);
+  margin-bottom: var(--space-1);
+}
+
+.meeting-entry__poll-row { margin-top: 10px; }
+
+.meeting-entry__poll-row-top {
+  display: grid;
+  grid-template-columns: 1fr 32px;
+  gap: 10px;
+  align-items: center;
+}
+
+.meeting-entry__poll-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink-700);
+}
+
+.meeting-entry__poll-count {
+  font-family: var(--font-body);
+  font-size: 13px;
+  text-align: right;
+  color: var(--fg-3);
+}
+
+.meeting-entry__poll-track {
+  height: 4px;
+  background: var(--paper-deep);
+  margin-top: 2px;
+  overflow: hidden;
+}
+
+.meeting-entry__poll-bar {
+  height: 100%;
+  background: var(--warm-600);
+  transition: width var(--dur-slow) var(--ease-out);
+}
+
+.meeting-entry__poll-foot {
+  margin-top: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--fg-3);
+}
+
+/* ---- Responsive --------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .meeting-entry__head { grid-template-columns: 64px 1fr auto; gap: var(--space-5); }
+  .meeting-entry__body { padding: var(--space-2) 0 var(--space-8) 84px; }
+  .meeting-entry__grid { gap: 28px var(--space-8); }
+}
+
+@media (max-width: 640px) {
+  .meeting-entry__head { grid-template-columns: 1fr auto; gap: var(--space-2); }
+  .meeting-entry__no { grid-column: 1; }
+  .meeting-entry__head-text { grid-column: 1 / -1; }
+  .meeting-entry__toggle { grid-row: 1; grid-column: 2; justify-self: end; }
+  .meeting-entry__body { padding: var(--space-1) 0 28px; }
+  .meeting-entry__grid { grid-template-columns: 1fr; gap: var(--space-6); }
+}

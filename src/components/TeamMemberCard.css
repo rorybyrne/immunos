@@ -1,0 +1,137 @@
+/* =========================================================================
+   TeamMemberCard — full-bio team card with warm portrait gradient or photo.
+   ========================================================================= */
+
+.team-card {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ---- Portrait --------------------------------------------------- */
+
+.team-card__portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.team-card__portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-card__portrait--v1 { background: linear-gradient(160deg, #FFEFCC 0%, #FFD15C 70%, #FFB37A 100%); }
+.team-card__portrait--v2 { background: linear-gradient(160deg, #FFE0A0 0%, #FF8B80 70%, #FF6A5D 100%); }
+.team-card__portrait--v3 { background: linear-gradient(160deg, #FFB37A 0%, #FF8B80 60%, #E54B3F 100%); }
+.team-card__portrait--v4 { background: linear-gradient(160deg, #FFD15C 0%, #FF6A5D 80%); }
+.team-card__portrait--v5 { background: linear-gradient(160deg, #FFEFCC 0%, #FFB37A 100%); }
+.team-card__portrait--v6 { background: linear-gradient(160deg, #FF8B80 0%, #E54B3F 100%); }
+
+.team-card__portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255, 209, 92, 0.18) 0%, transparent 60%);
+}
+
+.team-card__portrait-label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(0, 34, 74, 0.6);
+}
+
+/* ---- Body --------------------------------------------------------- */
+
+.team-card__body {
+  padding: 22px;
+}
+
+.team-card__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  font-weight: 500;
+  font-variation-settings: "opsz" 36;
+  color: var(--ink-700);
+}
+
+.team-card__role {
+  margin: 6px 0 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--warm-700);
+}
+
+.team-card__interest {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-700);
+  text-wrap: pretty;
+}
+
+.team-card__bio {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-2);
+}
+
+.team-card__affiliation {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--fg-3);
+}
+
+/* ---- Website link ------------------------------------------------ */
+
+.team-card__website {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink-700);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.team-card__website:hover {
+  color: var(--warm-700);
+}
+
+.team-card__website-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.team-card__website-label {
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+.team-card__website:hover .team-card__website-label {
+  text-decoration-color: var(--warm-700);
+}

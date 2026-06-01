@@ -1,0 +1,179 @@
+/* =========================================================================
+   ImmunOS — base
+   Reset + bare-element type styles. Token-driven; no hard-coded values.
+   ========================================================================= */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background: var(--bg-page);
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+video { display: block; max-width: 100%; height: auto; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+a:hover { color: var(--link-hover); }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--space-8) 0;
+}
+
+::selection {
+  background: var(--warm-300);
+  color: var(--ink-700);
+}
+
+/* ---- Editorial type primitives ------------------------------------- */
+
+.t-display {
+  font-family: var(--font-display);
+  font-size: var(--t-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  color: var(--fg-1);
+  margin: 0;
+}
+
+.t-h1 {
+  font-family: var(--font-display);
+  font-size: var(--t-h1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 400;
+  font-variation-settings: "opsz" 96;
+  color: var(--fg-1);
+  margin: 0;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 400;
+  font-variation-settings: "opsz" 60;
+  color: var(--fg-1);
+  margin: 0;
+}
+
+.t-h3 {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  font-weight: 500;
+  font-variation-settings: "opsz" 36;
+  color: var(--fg-1);
+  margin: 0;
+}
+
+.t-lede {
+  font-family: var(--font-body);
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-prose);
+  font-weight: 400;
+  color: var(--fg-2);
+}
+
+.t-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-eyebrow);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tr-eyebrow);
+  color: var(--fg-2);
+}
+
+.t-mono-caps {
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tr-mono-caps);
+  color: var(--fg-2);
+}
+
+/* ---- Layout shell -------------------------------------------------- */
+
+.shell {
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: var(--shell-pad-desk);
+}
+
+@media (max-width: 960px) {
+  .shell { padding-inline: var(--shell-pad-tablet); }
+}
+
+@media (max-width: 640px) {
+  .shell { padding-inline: var(--shell-pad-phone); }
+}
+
+/* ---- Section vertical rhythm --------------------------------------- */
+
+.section       { padding-block: var(--section-gap-desk); }
+.section-tight { padding-block: var(--space-6) var(--section-gap-desk); }
+.section-hero  { padding-block: 88px 56px; }
+
+@media (max-width: 960px) {
+  .section       { padding-block: var(--section-gap-tablet); }
+  .section-tight { padding-block: var(--space-5) var(--section-gap-tablet); }
+  .section-hero  { padding-block: 64px 40px; }
+}
+
+@media (max-width: 640px) {
+  .section       { padding-block: var(--section-gap-phone); }
+  .section-tight { padding-block: var(--space-4) var(--section-gap-phone); }
+  .section-hero  { padding-block: 48px 32px; }
+}
+
+/* ---- Reduced motion ----------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

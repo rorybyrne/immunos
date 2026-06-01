@@ -1,0 +1,36 @@
+---
+import "../styles/tokens.css";
+import "../styles/base.css";
+import "../styles/components.css";
+import Masthead from "../components/Masthead.astro";
+import Footer from "../components/Footer.astro";
+import site from "../data/site.json";
+
+interface Props {
+  title?: string;
+  description?: string;
+  activePage: "home" | "team" | "meetings" | "news";
+}
+
+const { description, activePage } = Astro.props;
+const pageTitle = site.siteTitle;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description ?? site.tagline} />
+  </head>
+  <body>
+    <Masthead activePage={activePage} nav={site.nav} />
+    <main>
+      <slot />
+    </main>
+    <Footer footer={site.footer} />
+  </body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "edition": "003",
+  "siteTitle": "ImmunOS",
+  "tagline": "An ARIA Innovator Circle exploring immunology and AI as two views of the same problem.",
+  "nav": [
+    { "id": "home",     "label": "Home",     "href": "/" },
+    { "id": "team",     "label": "Team",     "href": "/team/" },
+    { "id": "meetings", "label": "Meetings", "href": "/meetings/" }
+  ],
+  "home": {
+    "headline": "The immune system, as a biological operating system.",
+    "lede": "An innovator circle exploring sensing, computation, and control across scales — to understand how immune intelligence emerges, and how we might model or engineer it.",
+    "context": {
+      "convenedBy": "ARIA",
+      "convenedHref": "https://www.aria.org.uk/",
+      "facts": [
+        "Monthly, in person.",
+        "Talks, roundtables, writings, tools."
+      ]
+    }
+  },
+  "team": {
+    "headline": "A small, high-trust gathering of contrarian thinkers.",
+    "lede": "Researchers and engineers from across immunology, computation, and the gaps between."
+  },
+  "meetings": {
+    "headline": "A record of every edition — the speaker, the reading, the room's verdict.",
+    "lede": "Each meeting is summarised below. Open an edition for the speaker's bio, our writing on Substack, the field and industry news we tracked, the provocations tabled in the room, the show-of-hands poll, and the tools and artefacts the circle shared."
+  },
+  "news": {
+    "headline": "Immunology news, filed by the circle.",
+    "lede": "What we read this week. Preprints, papers, and the occasional press release that's worth the click."
+  },
+  "featuredStory": {
+    "eyebrow": "Preprint, bioRxiv · 14 April 2026",
+    "title": "A foundation model for T-cell receptor specificity, trained on 200M paired chains.",
+    "blurb": "The Krogsgaard and Regev labs combined paired TCR sequencing with epitope mapping at unusual scale. The headline result — generalisation to unseen MHC backgrounds — would be a serious update if it holds. Worth reading alongside the Cell commentary that frames the experimental gaps.",
+    "byline": "Filed by Jose · Recommended by Nile",
+    "linkLabel": "Read on bioRxiv →",
+    "href": "#"
+  },
+  "footer": {
+    "blurb": "An invite-only innovator circle exploring how immune intelligence emerges, and how we might model or engineer it. Convened by ARIA, monthly.",
+    "columns": [
+      {
+        "title": "The circle",
+        "links": [
+          { "label": "Team",          "href": "/team/" },
+          { "label": "Meetings",      "href": "/meetings/" }
+        ]
+      },
+      {
+        "title": "Reading",
+        "links": [
+          { "label": "Substack", "href": "#" }
+        ]
+      },
+      {
+        "title": "Contact",
+        "links": [
+          { "label": "hello@immunos.org", "href": "mailto:hello@immunos.org" }
+        ]
+      }
+    ],
+    "year": 2026
+  }
+}

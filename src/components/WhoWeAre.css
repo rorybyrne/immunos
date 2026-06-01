@@ -1,0 +1,133 @@
+/* =========================================================================
+   WhoWeAre — featured affiliates row + ghost cell linking to full team page.
+   Five cells at desktop; collapses to 3 at tablet, 2 at phone.
+   ========================================================================= */
+
+.who-we-are__intro {
+  margin: 0 0 var(--space-8);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--fg-2);
+  max-width: 660px;
+}
+
+/* ---- Grid -------------------------------------------------------- */
+
+.affiliate-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 960px) {
+  .affiliate-grid { grid-template-columns: repeat(3, 1fr); }
+  .affiliate-grid > :nth-child(3),
+  .affiliate-grid > :nth-child(4) { display: none; }
+}
+
+@media (max-width: 480px) {
+  .affiliate-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .affiliate-grid > :nth-child(2),
+  .affiliate-grid > :nth-child(3),
+  .affiliate-grid > :nth-child(4) { display: none; }
+}
+
+/* ---- Affiliate cell --------------------------------------------- */
+
+.affiliate-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.affiliate-cell__portrait {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border: 1px solid var(--rule);
+  margin-bottom: var(--space-2);
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.affiliate-cell__portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.affiliate-cell__portrait--v1 { background: linear-gradient(135deg, #FFE9D2 0%, #FFC98F 100%); }
+.affiliate-cell__portrait--v2 { background: linear-gradient(135deg, #FFEFCC 0%, #FFB37A 100%); }
+.affiliate-cell__portrait--v3 { background: linear-gradient(135deg, #F8DCC0 0%, #FFA86E 100%); }
+.affiliate-cell__portrait--v4 { background: linear-gradient(135deg, #FFE4C4 0%, #FFB37A 100%); }
+
+.affiliate-cell__name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 500;
+  font-variation-settings: "opsz" 18;
+  color: var(--ink-700);
+}
+
+.affiliate-cell__affiliation {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-3);
+}
+
+/* ---- Ghost cell -------------------------------------------------- */
+
+.affiliate-ghost {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.affiliate-ghost__portrait {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border: 1px dashed var(--ink-300);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.affiliate-ghost:hover .affiliate-ghost__portrait {
+  border-color: var(--ink-700);
+  background: rgba(0, 34, 74, 0.02);
+}
+
+.affiliate-ghost__num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 500;
+  font-variation-settings: "opsz" 36;
+  color: var(--ink-700);
+}
+
+.affiliate-ghost__name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 500;
+  font-variation-settings: "opsz" 18;
+  color: var(--warm-700);
+}
+
+.affiliate-ghost__affiliation {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--fg-3);
+}

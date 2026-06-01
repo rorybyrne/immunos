@@ -1,0 +1,30 @@
+---
+import "./HomeHero.css";
+
+interface Props {
+  headline: string;
+  lede: string;
+  context: {
+    convenedBy: string;
+    convenedHref: string;
+    facts: string[];
+  };
+}
+
+const { headline, lede, context } = Astro.props;
+---
+
+<section class="section-hero home-hero">
+  <div class="shell">
+    <h1 class="home-hero__headline">{headline}</h1>
+
+    <p class="home-hero__lede">{lede}</p>
+
+    <p class="home-hero__context">
+      <span>
+        Convened by <a class="home-hero__convened" href={context.convenedHref}>{context.convenedBy}</a>.
+      </span>
+      {context.facts.map((fact) => <span>&nbsp;&nbsp;{fact}</span>)}
+    </p>
+  </div>
+</section>

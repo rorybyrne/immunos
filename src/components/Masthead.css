@@ -1,0 +1,91 @@
+/* =========================================================================
+   Masthead — sticky bar with mark + wordmark on the left, nav on the right.
+   Stacks on phone (< 640px) per the prototype's breakpoint.
+   ========================================================================= */
+
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 247, 238, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--ink-200);
+}
+
+.masthead__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding-block: 18px 14px;
+}
+
+/* ---- Lockup ------------------------------------------------------- */
+
+.masthead__lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--ink-700);
+}
+
+.masthead__mark { flex-shrink: 0; }
+
+.masthead__wordmark {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1;
+}
+
+.masthead__wordmark b { font-weight: 700; }
+
+/* ---- Nav ---------------------------------------------------------- */
+
+.masthead__nav {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+}
+
+.masthead__nav-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 400;
+  color: var(--ink-400);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.masthead__nav-link:hover { color: var(--ink-700); }
+
+.masthead__nav-link.is-active {
+  color: var(--ink-700);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.4em;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: var(--ink-700);
+}
+
+/* ---- Responsive --------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .masthead__inner {
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-block: 14px 10px;
+    text-align: center;
+  }
+
+  .masthead__nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 8px;
+    gap: 18px;
+  }
+}

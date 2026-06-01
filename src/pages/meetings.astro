@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import MeetingEntry from "../components/MeetingEntry.astro";
+import site from "../data/site.json";
+
+const meetings = (await getCollection("meetings"))
+  .filter((m) => m.data.status === "past")
+  .sort((a, b) => Number(b.data.no) - Number(a.data.no));
+---
+
+<Layout activePage="meetings" title={site.meetings.headline}>
+  <section class="section-hero meetings-page">
+    <div class="shell">
+      <PageHeader headline={site.meetings.headline} lede={site.meetings.lede} />
+
+      <div class="meetings-page__list">
+        {
+          meetings.map((entry, i) => (
+            <MeetingEntry meeting={entry.data} isLast={i === meetings.length - 1} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+

@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import FeaturedStory from "../components/FeaturedStory.astro";
+import NewsFilter from "../components/NewsFilter.astro";
+import Tile from "../components/Tile.astro";
+import site from "../data/site.json";
+
+const news = await getCollection("news");
+news.sort((a, b) => b.data.filedAt.getTime() - a.data.filedAt.getTime());
+
+const categories = Array.from(new Set(news.map((n) => n.data.category)));
+---
+
+<Layout activePage="news" title={site.news.headline}>
+  <section class="section-hero news-page">
+    <div class="shell">
+      <PageHeader headline={site.news.headline} lede={site.news.lede} />
+
+      <NewsFilter categories={categories} total={news.length} />
+
+      <div data-featured-story>
+        <FeaturedStory story={site.featuredStory} />
+      </div>
+
+      <div class="tile-grid">
+        {
+          news.map((entry, i) => (
+            <Tile
+              eyebrow={entry.data.eyebrow}
+              title={entry.data.title}
+              blurb={entry.data.blurb}
+              source={entry.data.source}
+              href={entry.data.href}
+              thumbIdx={i}
+              category={entry.data.category}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .news-page .page-header { margin-bottom: var(--space-10); }
+</style>

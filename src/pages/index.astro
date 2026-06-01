@@ -1,17 +1,25 @@
 ---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import HomeHero from "../components/HomeHero.astro";
+import NextSession from "../components/NextSession.astro";
+import WhoWeAre from "../components/WhoWeAre.astro";
+import site from "../data/site.json";
 
+const meetings = await getCollection("meetings");
+const upcoming = meetings
+  .filter((m) => m.data.status === "upcoming")
+  .sort((a, b) => Number(a.data.no) - Number(b.data.no))[0];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout activePage="home">
+  <HomeHero
+    headline={site.home.headline}
+    lede={site.home.lede}
+    context={site.home.context}
+  />
+
+  {upcoming && <NextSession next={upcoming.data} />}
+
+  <WhoWeAre />
+</Layout>

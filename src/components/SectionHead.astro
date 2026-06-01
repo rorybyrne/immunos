@@ -1,0 +1,18 @@
+---
+import "./SectionHead.css";
+
+interface Props {
+  title: string;
+  linkLabel?: string;
+  href?: string;
+}
+
+const { title, linkLabel, href } = Astro.props;
+---
+
+<div class="section-head">
+  <h2 class="section-head__title">{title}</h2>
+  {linkLabel && href && (
+    <a class="section-head__link" href={href}>{linkLabel}</a>
+  )}
+</div>

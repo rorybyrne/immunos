@@ -1,0 +1,62 @@
+---
+import SectionHead from "./SectionHead.astro";
+import { getCollection } from "astro:content";
+import "./WhoWeAre.css";
+
+const all = await getCollection("team");
+all.sort((a, b) => a.data.order - b.data.order);
+
+const featured = all.filter((m) => m.data.featured).slice(0, 4);
+const totalMembers = all.length;
+const remaining = Math.max(totalMembers - featured.length, 0);
+---
+
+<section class="section who-we-are">
+  <div class="shell">
+    <SectionHead title="Who we are" linkLabel="Full member list →" href="/team/" />
+
+    <p class="who-we-are__intro">
+      ImmunOS is run by three people and attended by {totalMembers}. The convenor pulls the threads,
+      the programme lead curates each edition, and the news editor keeps us on top of the literature.
+      The room itself rotates by edition.
+    </p>
+
+    <div class="affiliate-grid">
+      {
+        featured.map((m, i) => {
+          const tagline = m.data.affiliationShort ?? m.data.affiliation;
+          const portrait = m.data.portrait;
+          return (
+            <div class="affiliate-cell">
+              <div
+                class:list={[
+                  "affiliate-cell__portrait",
+                  { [`affiliate-cell__portrait--v${(i % 4) + 1}`]: !portrait },
+                ]}
+              >
+                {portrait && (
+                  <img
+                    class="affiliate-cell__portrait-img"
+                    src={portrait}
+                    alt={`Portrait of ${m.data.name}`}
+                    loading="lazy"
+                  />
+                )}
+              </div>
+              <div class="affiliate-cell__name">{m.data.name}</div>
+              {tagline && <div class="affiliate-cell__affiliation">{tagline}</div>}
+            </div>
+          );
+        })
+      }
+
+      <a class="affiliate-ghost" href="/team/">
+        <div class="affiliate-ghost__portrait">
+          <span class="affiliate-ghost__num">+{remaining}</span>
+        </div>
+        <div class="affiliate-ghost__name">See the full team →</div>
+        <div class="affiliate-ghost__affiliation">{remaining} more members</div>
+      </a>
+    </div>
+  </div>
+</section>

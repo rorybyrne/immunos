@@ -1,0 +1,17 @@
+---
+import "./PageHeader.css";
+
+interface Props {
+  headline: string;
+  lede?: string;
+  /** "stacked" (default): title above lede. "split": title left, lede right. */
+  layout?: "stacked" | "split";
+}
+
+const { headline, lede, layout = "stacked" } = Astro.props;
+---
+
+<header class:list={["page-header", `page-header--${layout}`]}>
+  <h1 class="page-header__headline">{headline}</h1>
+  {lede && <p class="page-header__lede">{lede}</p>}
+</header>

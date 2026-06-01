@@ -1,0 +1,42 @@
+/* =========================================================================
+   SectionHead — title + optional right-aligned link, single ink rule below.
+   ========================================================================= */
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-6);
+  padding-bottom: 14px;
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--ink-700);
+}
+
+.section-head__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  font-weight: 500;
+  font-variation-settings: "opsz" 24;
+  color: var(--ink-700);
+}
+
+.section-head__link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--warm-700);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.section-head__link:hover {
+  color: var(--warm-800);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+@media (max-width: 480px) {
+  .section-head { flex-direction: column; gap: var(--space-2); align-items: flex-start; }
+}

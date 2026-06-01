@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import TeamMemberCard from "../components/TeamMemberCard.astro";
+import site from "../data/site.json";
+
+const team = await getCollection("team");
+team.sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout activePage="team" title={site.team.headline}>
+  <section class="section-hero team-page">
+    <div class="shell">
+      <PageHeader
+        headline={site.team.headline}
+        lede={site.team.lede}
+        layout="split"
+      />
+
+      <div class="team-grid">
+        {
+          team.map((entry, i) => (
+            <TeamMemberCard
+              name={entry.data.name}
+              role={entry.data.role}
+              interest={entry.data.interest}
+              bio={(entry.body ?? "").trim()}
+              affiliation={entry.data.affiliation}
+              portrait={entry.data.portrait}
+              website={entry.data.website}
+              index={i}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 640px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+  }
+
+  @media (min-width: 960px) {
+    .team-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); }
+  }
+</style>

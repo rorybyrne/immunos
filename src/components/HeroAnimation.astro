@@ -1,0 +1,145 @@
+---
+/*
+  HeroAnimation — minimalist outlined motif for the home hero.
+  Loop: a single immune cell presents a TCR/antibody "Y"; an antigen drifts in
+  and docks (bind-pulse confirms it); the cell then swirls (rotate + fade) and
+  morphs into a small, tidy cell cluster — with the coral cell carried through
+  as one of the cluster — before unwinding back to the single cell.
+  Stroke-only (explicit fill="none"), palette-true. Global reduced-motion reset
+  settles it on the single-cell frame.
+*/
+---
+
+<div class="hero-anim" aria-hidden="true">
+  <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Field: slow counter-rotating dashed rings -->
+    <g class="ha-spin-cw">
+      <circle fill="none" cx="300" cy="300" r="244" stroke="#6B7B97" stroke-width="1.5" stroke-dasharray="2 16" opacity="0.30" />
+    </g>
+    <g class="ha-spin-ccw">
+      <circle fill="none" cx="300" cy="300" r="196" stroke="#6B7B97" stroke-width="1.5" stroke-dasharray="2 12" opacity="0.26" />
+    </g>
+    <circle fill="none" cx="300" cy="300" r="150" stroke="#6B7B97" stroke-width="1.2" opacity="0.16" />
+
+    <!-- Single-cell phase: membrane + antibody/TCR + docking antigen -->
+    <g class="ha-cell">
+      <circle class="ha-breathe" fill="none" cx="300" cy="300" r="112" stroke="#3D4E6B" stroke-width="2" opacity="0.55" />
+
+      <g fill="none" stroke="#1B304F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M300 358 V300" />
+        <path d="M300 300 L258 252" />
+        <path d="M300 300 L342 252" />
+        <circle cx="258" cy="252" r="11" stroke="#4070F0" stroke-width="2.5" />
+        <circle cx="342" cy="252" r="11" stroke="#4070F0" stroke-width="2.5" />
+        <circle cx="300" cy="300" r="6" stroke="#1B304F" stroke-width="2.5" />
+      </g>
+
+      <circle class="ha-antigen" fill="none" cx="300" cy="176" r="9" stroke="#FF6A5D" stroke-width="2.5" />
+    </g>
+
+    <!-- Bind-pulse — blooms from the cleft at the moment of docking -->
+    <circle class="ha-bindpulse" fill="none" cx="300" cy="250" r="16" stroke="#FF6A5D" stroke-width="2" opacity="0" />
+
+    <!-- Organoid phase: a tidy flower cluster; the coral cell carried through -->
+    <g class="ha-cluster">
+      <circle fill="none" cx="300" cy="300" r="34" stroke="#4070F0" stroke-width="2.5" />
+      <circle fill="none" cx="372" cy="300" r="32" stroke="#3D4E6B" stroke-width="2.5" />
+      <circle fill="none" cx="336" cy="362" r="32" stroke="#3D4E6B" stroke-width="2.5" />
+      <circle fill="none" cx="264" cy="362" r="32" stroke="#3D4E6B" stroke-width="2.5" />
+      <circle fill="none" cx="228" cy="300" r="32" stroke="#3D4E6B" stroke-width="2.5" />
+      <circle fill="none" cx="264" cy="238" r="32" stroke="#3D4E6B" stroke-width="2.5" />
+      <circle fill="none" cx="336" cy="238" r="32" stroke="#FF6A5D" stroke-width="2.5" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .hero-anim {
+    width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
+  }
+
+  .hero-anim svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  /* Field rotation — very slow, around the canvas centre. */
+  .ha-spin-cw,
+  .ha-spin-ccw {
+    transform-box: view-box;
+    transform-origin: 300px 300px;
+  }
+  .ha-spin-cw { animation: ha-rot 90s linear infinite; }
+  .ha-spin-ccw { animation: ha-rot 78s linear infinite reverse; }
+  @keyframes ha-rot { to { transform: rotate(360deg); } }
+
+  /* Membrane breathing. */
+  .ha-breathe {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ha-breathe 7s var(--ease-in-out) infinite;
+  }
+  @keyframes ha-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  /* The single cell binds, then swirls out (rotate + fade), then unwinds back. */
+  .ha-cell {
+    transform-box: view-box;
+    transform-origin: 300px 300px;
+    animation: ha-cell 13s var(--ease-in-out) infinite;
+  }
+  /* Keeps turning clockwise the whole way round — a full 360° circle. */
+  @keyframes ha-cell {
+    0%, 40% { opacity: 1; transform: rotate(0deg); }
+    54% { opacity: 0; transform: rotate(160deg); }
+    86% { opacity: 0; transform: rotate(300deg); }
+    98%, 100% { opacity: 1; transform: rotate(360deg); }
+  }
+
+  /* Antigen drifts in, docks into the cleft, then releases as the cell swirls. */
+  .ha-antigen {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ha-dock 13s var(--ease-in-out) infinite;
+  }
+  @keyframes ha-dock {
+    0% { transform: translateY(-74px); opacity: 0; }
+    10% { opacity: 1; }
+    28%, 44% { transform: translateY(74px); opacity: 1; }
+    54% { transform: translateY(74px); opacity: 0; }
+    100% { transform: translateY(-74px); opacity: 0; }
+  }
+
+  /* Bind-pulse fires at the dock moment. */
+  .ha-bindpulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ha-bindpulse 13s var(--ease-in-out) infinite;
+  }
+  @keyframes ha-bindpulse {
+    0%, 28% { opacity: 0; transform: scale(0.4); }
+    36% { opacity: 0.6; transform: scale(1); }
+    48% { opacity: 0; transform: scale(2); }
+    100% { opacity: 0; transform: scale(2); }
+  }
+
+  /* Cluster swirls in (rotate + scale), holds with a slow spin, swirls out. */
+  .ha-cluster {
+    transform-box: view-box;
+    transform-origin: 300px 300px;
+    opacity: 0;
+    animation: ha-cluster 13s var(--ease-in-out) infinite;
+  }
+  @keyframes ha-cluster {
+    0%, 44% { opacity: 0; transform: rotate(-170deg) scale(0.2); }
+    62% { opacity: 1; transform: rotate(0deg) scale(1); }
+    82% { opacity: 1; transform: rotate(14deg) scale(1); }
+    94%, 100% { opacity: 0; transform: rotate(150deg) scale(0.2); }
+  }
+</style>

@@ -1,0 +1,91 @@
+/* =========================================================================
+   ThinkingSlider — "What we're thinking about". A horizontal scroll-snap rail
+   of Substack post tiles. Each tile renders the full post artwork (title baked
+   in) and pops up slightly on hover. Posts without artwork are left out.
+   ========================================================================= */
+
+.thinking { scroll-margin-top: 96px; }
+
+.thinking__lede {
+  margin: var(--space-3) 0 0;
+  max-width: 60ch;
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  color: var(--fg-2);
+}
+
+/* ---- Rail (the slider) -------------------------------------------- */
+
+.thinking__rail {
+  margin-top: var(--space-8);
+  display: flex;
+  gap: var(--space-6);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--space-4);
+  -webkit-overflow-scrolling: touch;
+  /* Firefox slider bar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-300) var(--paper-deep);
+}
+
+/* WebKit slider bar */
+.thinking__rail::-webkit-scrollbar { height: 8px; }
+.thinking__rail::-webkit-scrollbar-track {
+  background: var(--paper-deep);
+  border-radius: var(--radius-pill);
+}
+.thinking__rail::-webkit-scrollbar-thumb {
+  background: var(--ink-300);
+  border-radius: var(--radius-pill);
+}
+.thinking__rail::-webkit-scrollbar-thumb:hover { background: var(--ink-400); }
+
+/* ---- Post tile ---------------------------------------------------- */
+
+.post-card {
+  flex: 0 0 min(320px, 80vw);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* The full artwork renders at its natural aspect; the box pops up on hover. */
+.post-card__media {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  transition:
+    box-shadow var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.post-card:hover .post-card__media {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.post-card__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.post-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--fg-3);
+}
+
+.post-card__readmore {
+  margin-left: auto;
+  color: var(--warm-700);
+  font-weight: 500;
+}

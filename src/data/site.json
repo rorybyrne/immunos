@@ -3,13 +3,28 @@
   "siteTitle": "ImmunOS",
   "tagline": "An ARIA Innovator Circle exploring immunology and AI as two views of the same problem.",
   "nav": [
-    { "id": "home",     "label": "Home",     "href": "/" },
-    { "id": "team",     "label": "Team",     "href": "/team/" },
-    { "id": "meetings", "label": "Meetings", "href": "/meetings/" }
+    {
+      "id": "circle",
+      "label": "The Circle",
+      "children": [
+        { "id": "team",     "label": "Team",     "href": "/team/" },
+        { "id": "meetings", "label": "Meetings", "href": "/meetings/" }
+      ]
+    },
+    {
+      "id": "reading",
+      "label": "Reading",
+      "href": "/#thinking"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "href": "#contact"
+    }
   ],
   "home": {
-    "headline": "The immune system, as a biological operating system.",
-    "lede": "An innovator circle exploring sensing, computation, and control across scales — to understand how immune intelligence emerges, and how we might model or engineer it.",
+    "headline": "The immune system is <br />a biological operating system.",
+    "lede": "An innovator circle dedicated to understanding immune intelligence: <br />how it senses, computes, and controls, and ultimately, how to engineer with it.",
     "context": {
       "convenedBy": "ARIA",
       "convenedHref": "https://www.aria.org.uk/",
@@ -24,12 +39,29 @@
     "lede": "Researchers and engineers from across immunology, computation, and the gaps between."
   },
   "meetings": {
-    "headline": "A record of every edition — the speaker, the reading, the room's verdict.",
-    "lede": "Each meeting is summarised below. Open an edition for the speaker's bio, our writing on Substack, the field and industry news we tracked, the provocations tabled in the room, the show-of-hands poll, and the tools and artefacts the circle shared."
+    "headline": "Past Meetings"
   },
   "news": {
     "headline": "Immunology news, filed by the circle.",
     "lede": "What we read this week. Preprints, papers, and the occasional press release that's worth the click."
+  },
+  "thinking": {
+    "heading": "What we're thinking about",
+    "lede": "Dispatches from the circle — essays and field notes we publish on Substack.",
+    "substackHref": "https://substack.com/@immunos",
+    "substackLabel": "All posts on Substack →",
+    "posts": [
+      {
+        "title": "J. Kwok: A Living Venn Diagram of the Biotech Ecosystem",
+        "image": "/substack/substack2broad.jpeg",
+        "href": "https://substack.com/home/post/p-203367732"
+      },
+      {
+        "title": "The Immune System is an Operating System",
+        "image": "/substack/substack1broad.jpeg",
+        "href": "https://substack.com/home/post/p-196561346"
+      }
+    ]
   },
   "featuredStory": {
     "eyebrow": "Preprint, bioRxiv · 14 April 2026",
@@ -43,7 +75,7 @@
     "blurb": "An invite-only innovator circle exploring how immune intelligence emerges, and how we might model or engineer it. Convened by ARIA, monthly.",
     "columns": [
       {
-        "title": "The circle",
+        "title": "The Circle",
         "links": [
           { "label": "Team",          "href": "/team/" },
           { "label": "Meetings",      "href": "/meetings/" }
@@ -52,13 +84,13 @@
       {
         "title": "Reading",
         "links": [
-          { "label": "Substack", "href": "#" }
+          { "label": "Substack", "href": "https://substack.com/@immunos" }
         ]
       },
       {
         "title": "Contact",
         "links": [
-          { "label": "hello@immunos.org", "href": "mailto:hello@immunos.org" }
+          { "label": "research@immunos.bio", "href": "mailto:research@immunos.bio" }
         ]
       }
     ],

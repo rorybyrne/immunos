@@ -1,38 +1,68 @@
 /* =========================================================================
-   HomeHero — the home-page intro: serif headline, body lede, quiet context
-   line. No eyebrow, no hot rule, no highlight — per the prototype.
+   HomeHero — full-viewport intro. Two-line Fraunces headline + lede on the
+   left, minimalist outlined cell→cluster animation on the right. The left edge
+   stays pinned to the masthead's content margin; on desktop the hero extends
+   rightward so the headline can grow without moving that edge. Palette as-is.
    ========================================================================= */
 
-.home-hero { background: var(--paper); }
+.home-hero {
+  background: var(--paper);
+  /* Fill the first screen (minus the taller sticky masthead), content centred. */
+  min-height: calc(100vh - 90px);
+  min-height: calc(100svh - var(--masthead-h, 90px));
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-10);
+}
+
+.home-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 3.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-10);
+}
+
+/* Desktop: left edge = the centred 1080 shell's left edge (lined up with the
+   logo); extend right up to ~1280 so the headline has room to be larger. */
+@media (min-width: 961px) {
+  .home-hero__inner {
+    --hero-gutter: max(
+      var(--shell-pad-desk),
+      calc((100vw - var(--shell-max)) / 2 + var(--shell-pad-desk))
+    );
+    max-width: none;
+    margin-left: var(--hero-gutter);
+    margin-right: 0;
+    padding-inline: 0;
+    width: min(1000px, calc(100vw - var(--hero-gutter) - 96px));
+  }
+}
+
+/* Container so the headline can be sized to fill this column's width. */
+.home-hero__content {
+  container-type: inline-size;
+}
 
 .home-hero__headline {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 34px;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  font-variation-settings: "opsz" 24, "SOFT" 0;
+  /* Scales with the (now wider) column so each line fills the box; the higher
+     cap lets it grow a good 10pt over the old size. */
+  font-size: clamp(2.1rem, 6.6cqw, 4.1rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 96, "SOFT" 0;
   font-weight: 400;
   color: var(--ink-700);
-  max-width: 720px;
-  text-wrap: pretty;
-}
-
-@media (max-width: 960px) {
-  .home-hero__headline { font-size: 30px; }
-}
-
-@media (max-width: 640px) {
-  .home-hero__headline { font-size: 26px; line-height: 1.25; }
 }
 
 .home-hero__lede {
-  margin: var(--space-5) 0 0;
+  margin: var(--space-6) 0 0;
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: clamp(1rem, 1.1vw, 1.18rem);
+  line-height: 1.6;
   color: var(--fg-2);
-  max-width: 660px;
+  max-width: none;
 }
 
 .home-hero__context {
@@ -41,7 +71,12 @@
   font-size: 14px;
   line-height: 1.6;
   color: var(--fg-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
 }
+
+.home-hero__fact { white-space: nowrap; }
 
 .home-hero__convened {
   color: var(--ink-700);
@@ -53,4 +88,44 @@
   color: var(--warm-700);
   text-decoration: underline;
   text-underline-offset: 0.18em;
+}
+
+.home-hero__visual {
+  display: flex;
+  justify-content: center;
+}
+
+/* Desktop: enlarge the animation 1.5× and nudge it 80px further left, without
+   touching the headline's size or position. */
+@media (min-width: 961px) {
+  .home-hero__visual {
+    transform: translateX(-80px) scale(1.5);
+  }
+}
+
+/* ---- Responsive --------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .home-hero {
+    min-height: 0;
+    padding-block: var(--space-16);
+  }
+
+  .home-hero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    justify-items: start;
+  }
+
+  .home-hero__headline { font-size: clamp(2rem, 8vw, 3rem); }
+
+  .home-hero__visual {
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-hero { padding-block: var(--space-12); }
+  .home-hero__visual { display: none; }
 }

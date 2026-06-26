@@ -22,22 +22,33 @@ const label = `Edition No. ${next.no}`;
     <SectionHead title="Next meeting" linkLabel="Past meetings →" href="/meetings/" />
 
     <article class="next-card">
-      <div class="next-card__edition">{label}</div>
-      <h3 class="next-card__title">{next.title}</h3>
-      {next.description && <p class="next-card__desc">{next.description}</p>}
+      <div class="next-card__content">
+        <div class="next-card__edition">{label}</div>
+        <h3 class="next-card__title">{next.title}</h3>
+        {next.description && <p class="next-card__desc">{next.description}</p>}
 
-      <dl class="next-card__meta">
-        <dt>When</dt>
-        <dd>{next.date}</dd>
-        <dt>Where</dt>
-        <dd>{next.venue}</dd>
-        {next.format && (
-          <>
-            <dt>Format</dt>
-            <dd>{next.format}</dd>
-          </>
-        )}
-      </dl>
+        <dl class="next-card__meta">
+          <dt>When</dt>
+          <dd>{next.date}</dd>
+          <dt>Where</dt>
+          <dd>{next.venue}</dd>
+          {next.format && (
+            <>
+              <dt>Format</dt>
+              <dd>{next.format}</dd>
+            </>
+          )}
+        </dl>
+      </div>
+
+      <img
+        class="next-card__thumb"
+        src={`/luma/ImmunOS-luma${next.no}.png`}
+        alt=""
+        width="280"
+        height="280"
+        loading="lazy"
+      />
     </article>
   </div>
 </section>

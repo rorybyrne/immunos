@@ -1,10 +1,10 @@
 ---
 name: Hannah Maude
-role: Postdoctoral Research Associate
-affiliation: Section of Genetics & Genomics, Imperial College London
-interest: Here to accelerate immunology research through collaborative brainstorming
+role: "Postdoctoral Researcher Associate at Imperial College London"
+affiliation: Imperial College London
+interest: "Accelerating immunology research through collaborative brainstorming."
 portrait: /team/hannah.png
 website: https://dnaand.co.uk/hannah-maude/
-order: 5
+order: 10
 featured: true
 ---

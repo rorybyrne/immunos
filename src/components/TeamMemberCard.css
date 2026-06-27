@@ -3,10 +3,26 @@
    ========================================================================= */
 
 .team-card {
+  display: flex;
+  flex-direction: column;
   background: var(--paper-card);
   border: 1px solid var(--rule);
   overflow: hidden;
   box-shadow: var(--shadow-xs);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+/* The whole card links to the member's site; lift it on hover. */
+a.team-card:hover {
+  border-color: var(--rule-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  color: inherit;
 }
 
 /* ---- Portrait --------------------------------------------------- */
@@ -24,6 +40,9 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  /* Uniform black & white across the team grid. Non-destructive — the
+     already-monochrome portraits (Thomas, Inga) are unaffected. */
+  filter: grayscale(100%);
 }
 
 .team-card__portrait--v1 { background: linear-gradient(160deg, #FFEFCC 0%, #FFD15C 70%, #FFB37A 100%); }
@@ -52,13 +71,16 @@
 /* ---- Body --------------------------------------------------------- */
 
 .team-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 22px;
 }
 
 .team-card__name {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 17px;
   line-height: 1.2;
   letter-spacing: -0.005em;
   font-weight: 500;
@@ -70,8 +92,11 @@
   margin: 6px 0 14px;
   font-family: var(--font-body);
   font-size: 13px;
+  line-height: 1.4;
   font-style: italic;
   color: var(--warm-700);
+  /* Reserve 3 lines so every interest paragraph starts at the same height. */
+  min-height: calc(1.4em * 3);
 }
 
 .team-card__interest {
@@ -92,46 +117,17 @@
   color: var(--fg-2);
 }
 
+/* Pushed to the bottom, with 2 lines reserved, so the divider line lands at
+   the same height across every card. */
 .team-card__affiliation {
-  margin-top: 14px;
+  margin-top: auto;
   padding-top: 12px;
   border-top: 1px solid var(--rule);
   font-family: var(--font-body);
   font-size: 13px;
+  line-height: 1.5;
   color: var(--fg-3);
+  min-height: calc(13px + 3em);
 }
 
-/* ---- Website link ------------------------------------------------ */
-
-.team-card__website {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin-top: var(--space-2);
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--ink-700);
-  text-decoration: none;
-  transition: color var(--dur-fast) var(--ease-out);
-}
-
-.team-card__website:hover {
-  color: var(--warm-700);
-}
-
-.team-card__website-icon {
-  flex-shrink: 0;
-  display: block;
-}
-
-.team-card__website-label {
-  text-decoration: underline;
-  text-decoration-color: var(--rule-strong);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-  transition: text-decoration-color var(--dur-fast) var(--ease-out);
-}
-
-.team-card__website:hover .team-card__website-label {
-  text-decoration-color: var(--warm-700);
-}
+/* (Website link removed — the whole card is the link now.) */

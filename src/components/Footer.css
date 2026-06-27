@@ -33,6 +33,14 @@
   gap: var(--space-3);
 }
 
+/* Navy mark on a navy footer → flip to a white silhouette. */
+.footer__mark {
+  display: block;
+  width: 36px;
+  height: 36px;
+  filter: brightness(0) invert(1);
+}
+
 .footer__wordmark {
   font-family: var(--font-body);
   font-size: 20px;

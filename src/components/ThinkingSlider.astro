@@ -1,0 +1,59 @@
+---
+import SectionHead from "./SectionHead.astro";
+import "./ThinkingSlider.css";
+
+interface Post {
+  title: string;
+  href: string;
+  image?: string;
+  date?: string;
+}
+
+interface Props {
+  data: {
+    heading: string;
+    lede?: string;
+    substackHref?: string;
+    substackLabel?: string;
+    posts: Post[];
+  };
+}
+
+const { data } = Astro.props;
+/* Only show posts that have artwork — leave the rest blank until they exist. */
+const posts = data.posts.filter((p) => p.image);
+---
+
+<section class="section thinking" id="thinking">
+  <div class="shell">
+    <SectionHead
+      title={data.heading}
+      linkLabel={data.substackLabel}
+      href={data.substackHref}
+    />
+
+    {data.lede && <p class="thinking__lede">{data.lede}</p>}
+
+    <div class="thinking__rail" role="list">
+      {
+        posts.map((p) => (
+          <a
+            class="post-card"
+            role="listitem"
+            href={p.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div class="post-card__media">
+              <img src={p.image} alt={p.title} loading="lazy" />
+            </div>
+            <div class="post-card__meta">
+              {p.date && <span class="post-card__date">{p.date}</span>}
+              <span class="post-card__readmore">Read post →</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

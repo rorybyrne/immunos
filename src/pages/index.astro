@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import HomeHero from "../components/HomeHero.astro";
 import NextSession from "../components/NextSession.astro";
 import WhoWeAre from "../components/WhoWeAre.astro";
+import ThinkingSlider from "../components/ThinkingSlider.astro";
 import site from "../data/site.json";
 
 const meetings = await getCollection("meetings");
@@ -20,6 +21,8 @@ const upcoming = meetings
   />
 
   {upcoming && <NextSession next={upcoming.data} />}
+
+  <ThinkingSlider data={site.thinking} />
 
   <WhoWeAre />
 </Layout>

@@ -15,7 +15,7 @@ team.sort((a, b) => a.data.order - b.data.order);
       <PageHeader
         headline={site.team.headline}
         lede={site.team.lede}
-        layout="split"
+        layout="stacked"
       />
 
       <div class="team-grid">
@@ -41,15 +41,25 @@ team.sort((a, b) => a.data.order - b.data.order);
 <style>
   .team-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6) var(--space-5);
   }
 
-  @media (min-width: 640px) {
-    .team-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+  @media (min-width: 720px) {
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  @media (min-width: 960px) {
-    .team-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-8); }
+  @media (min-width: 980px) {
+    .team-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  @media (max-width: 459px) {
+    .team-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Team-page header fills the shell so each line stays on one line. */
+  .team-page :global(.page-header__headline),
+  .team-page :global(.page-header__lede) {
+    max-width: none;
   }
 </style>

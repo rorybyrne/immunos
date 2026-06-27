@@ -1,10 +1,10 @@
 ---
 name: David Buterez
-role: Postdoctoral researcher
-affiliation: Generative Biology Institute, Ellison Institute of Technology Oxford
-interest: Interested in applying computational principles to programming biology
+role: "Postdoctoral Researcher at Generative Biology Institute (EIT) Oxford"
+affiliation: Generative Biology Institute (EIT) Oxford
+interest: "Exploring and applying computational principles to programming biology."
 portrait: /team/david.png
 website: https://scholar.google.com/citations?user=xXcubykAAAAJ&hl=en
-order: 4
+order: 9
 featured: true
 ---

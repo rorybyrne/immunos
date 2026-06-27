@@ -61,6 +61,14 @@ const pollTotal = meeting.poll?.results.reduce((s, r) => s + r.n, 0) ?? 0;
             )}
           </div>
         </div>
+        <img
+          class="meeting-entry__thumb"
+          src={`/luma/ImmunOS-luma${meeting.no}.png`}
+          alt=""
+          width="80"
+          height="80"
+          loading="lazy"
+        />
         <span class="meeting-entry__toggle">
           <span class="meeting-entry__toggle-open">Read +</span>
           <span class="meeting-entry__toggle-close">Close —</span>
@@ -99,17 +107,19 @@ const pollTotal = meeting.poll?.results.reduce((s, r) => s + r.n, 0) ?? 0;
           </section>
         )}
 
-        <section class="meeting-entry__section">
-          <div class="meeting-entry__label">Our writing</div>
-          <ul class="meeting-entry__links">
-            {meeting.writing.map((w) => (
-              <li>
-                <a class="meeting-entry__link" href={w.href}>{w.title}</a>
-                <span class="meeting-entry__link-meta">{w.meta}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {meeting.writing.length > 0 && (
+          <section class="meeting-entry__section">
+            <div class="meeting-entry__label">Our writing</div>
+            <ul class="meeting-entry__links">
+              {meeting.writing.map((w) => (
+                <li>
+                  <a class="meeting-entry__link" href={w.href}>{w.title}</a>
+                  <span class="meeting-entry__link-meta">{w.meta}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section class="meeting-entry__section">
           <div class="meeting-entry__label">Field news</div>

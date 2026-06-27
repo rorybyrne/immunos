@@ -1,10 +1,10 @@
 ---
 name: Benedict Moss
-role: Final-year PhD student
+role: "PhD Student at Imperial College London"
 affiliation: Imperial College London
-interest: Sharing ImmunOS output with the wider scientific community and building its online presence
+interest: "Writer-in-residence sharing immunology fascination with the wider scientific community."
 portrait: /team/ben.jpg
 website: https://www.linkedin.com/in/benedict-moss
-order: 3
+order: 12
 featured: false
 ---

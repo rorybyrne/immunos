@@ -24,9 +24,20 @@
 
 .meeting-entry__head {
   display: grid;
-  grid-template-columns: 92px 1fr auto;
+  grid-template-columns: 92px 1fr auto auto;
   gap: var(--space-8);
-  align-items: baseline;
+  align-items: center;
+}
+
+/* Small square Luma thumbnail, sits left of the Read+ toggle. */
+.meeting-entry__thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ink-200);
+  display: block;
+  flex-shrink: 0;
 }
 
 .meeting-entry__no {
@@ -281,7 +292,7 @@
 /* ---- Responsive --------------------------------------------------- */
 
 @media (max-width: 960px) {
-  .meeting-entry__head { grid-template-columns: 64px 1fr auto; gap: var(--space-5); }
+  .meeting-entry__head { grid-template-columns: 64px 1fr auto auto; gap: var(--space-5); }
   .meeting-entry__body { padding: var(--space-2) 0 var(--space-8) 84px; }
   .meeting-entry__grid { gap: 28px var(--space-8); }
 }
@@ -291,6 +302,7 @@
   .meeting-entry__no { grid-column: 1; }
   .meeting-entry__head-text { grid-column: 1 / -1; }
   .meeting-entry__toggle { grid-row: 1; grid-column: 2; justify-self: end; }
+  .meeting-entry__thumb { display: none; }
   .meeting-entry__body { padding: var(--space-1) 0 28px; }
   .meeting-entry__grid { grid-template-columns: 1fr; gap: var(--space-6); }
 }

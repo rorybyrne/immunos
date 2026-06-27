@@ -3,31 +3,31 @@ import SectionHead from "./SectionHead.astro";
 import { getCollection } from "astro:content";
 import "./WhoWeAre.css";
 
-const all = await getCollection("team");
-all.sort((a, b) => a.data.order - b.data.order);
-
-const featured = all.filter((m) => m.data.featured).slice(0, 4);
-const totalMembers = all.length;
-const remaining = Math.max(totalMembers - featured.length, 0);
+const team = await getCollection("team");
+team.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="section who-we-are">
   <div class="shell">
-    <SectionHead title="Who we are" linkLabel="Full member list →" href="/team/" />
+    <SectionHead title="Who we are" />
 
     <p class="who-we-are__intro">
-      ImmunOS is run by three people and attended by {totalMembers}. The convenor pulls the threads,
-      the programme lead curates each edition, and the news editor keeps us on top of the literature.
-      The room itself rotates by edition.
+      Alex and Inga co-founded ImmunOS to propose a paradigm shift in how to think about, and
+      engage with, the immune system. Bringing together a core team of ten individuals across
+      academia, industry, and startups, we are now doing exactly that:
+      redefining and re-engineering the immunology textbook, one concept at a time.
     </p>
 
     <div class="affiliate-grid">
       {
-        featured.map((m, i) => {
-          const tagline = m.data.affiliationShort ?? m.data.affiliation;
+        team.map((m, i) => {
           const portrait = m.data.portrait;
+          const linkAttrs = m.data.website
+            ? { href: m.data.website, target: "_blank", rel: "noreferrer" }
+            : {};
+          const Tag = m.data.website ? "a" : "div";
           return (
-            <div class="affiliate-cell">
+            <Tag class="affiliate-cell" {...linkAttrs}>
               <div
                 class:list={[
                   "affiliate-cell__portrait",
@@ -43,20 +43,13 @@ const remaining = Math.max(totalMembers - featured.length, 0);
                   />
                 )}
               </div>
+
               <div class="affiliate-cell__name">{m.data.name}</div>
-              {tagline && <div class="affiliate-cell__affiliation">{tagline}</div>}
-            </div>
+              {m.data.role && <div class="affiliate-cell__role">{m.data.role}</div>}
+            </Tag>
           );
         })
       }
-
-      <a class="affiliate-ghost" href="/team/">
-        <div class="affiliate-ghost__portrait">
-          <span class="affiliate-ghost__num">+{remaining}</span>
-        </div>
-        <div class="affiliate-ghost__name">See the full team →</div>
-        <div class="affiliate-ghost__affiliation">{remaining} more members</div>
-      </a>
     </div>
   </div>
 </section>

@@ -1,11 +1,18 @@
 ---
-import Mark from "./Mark.astro";
 import "./Masthead.css";
+
+interface NavChild {
+  id?: string;
+  label: string;
+  href: string;
+  external?: boolean;
+}
 
 interface NavItem {
   id: string;
   label: string;
-  href: string;
+  href?: string;
+  children?: NavChild[];
 }
 
 interface Props {
@@ -19,21 +26,65 @@ const { activePage, nav } = Astro.props;
 <header class="masthead">
   <div class="shell masthead__inner">
     <a class="masthead__lockup" href="/" aria-label="ImmunOS — home">
-      <Mark size={30} class="masthead__mark" />
+      <img
+        class="masthead__mark"
+        src="/brand/immunos-mark.png"
+        alt=""
+        width="38"
+        height="38"
+      />
       <span class="masthead__wordmark">Immun<b>OS</b></span>
     </a>
 
     <nav class="masthead__nav" aria-label="Primary">
       {
-        nav.map((item) => (
-          <a
-            class:list={["masthead__nav-link", { "is-active": item.id === activePage }]}
-            href={item.href}
-            aria-current={item.id === activePage ? "page" : undefined}
-          >
-            {item.label}
-          </a>
-        ))
+        nav.map((item) => {
+          if (item.children && item.children.length) {
+            const isActive = item.children.some((c) => c.id === activePage);
+            return (
+              <div class:list={["nav-group", { "is-active": isActive }]}>
+                <span class="nav-group__label" tabindex="0" aria-haspopup="true">
+                  {item.label}
+                  <svg
+                    class="nav-group__caret"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 10 10"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 3.5l4 4 4-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <div class="nav-group__menu" role="menu">
+                  {item.children.map((child) => (
+                    <a
+                      class="nav-group__item"
+                      href={child.href}
+                      role="menuitem"
+                      aria-current={child.id === activePage ? "page" : undefined}
+                      {...(child.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                    >
+                      {child.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <a class="nav-link" href={item.href}>
+              {item.label}
+            </a>
+          );
+        })
       }
     </nav>
   </div>

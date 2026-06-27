@@ -16,24 +16,14 @@ const { name, role, interest, bio, affiliation, portrait, website, index } = Ast
 const portraitVariant = `team-card__portrait--v${(index % 6) + 1}`;
 const portraitNumber = String(index + 1).padStart(2, "0");
 
-type LinkKind = "linkedin" | "globe";
-function classifyLink(url: string): { kind: LinkKind; label: string } {
-  try {
-    const u = new URL(url);
-    const host = u.hostname.toLowerCase();
-    if (host.endsWith("linkedin.com")) {
-      return { kind: "linkedin", label: "LinkedIn" };
-    }
-    return { kind: "globe", label: host.replace(/^www\./, "") };
-  } catch {
-    return { kind: "globe", label: url };
-  }
-}
-
-const link = website ? classifyLink(website) : null;
+/* The whole card links to the member's site when they have one. */
+const Tag = website ? "a" : "article";
+const linkAttrs = website
+  ? { href: website, target: "_blank", rel: "noreferrer" }
+  : {};
 ---
 
-<article class="team-card">
+<Tag class="team-card" {...linkAttrs}>
   <div class:list={["team-card__portrait", { [portraitVariant]: !portrait }]}>
     {portrait ? (
       <img class="team-card__portrait-img" src={portrait} alt={`Portrait of ${name}`} loading="lazy" />
@@ -50,46 +40,5 @@ const link = website ? classifyLink(website) : null;
     {interest && <p class="team-card__interest">{interest}</p>}
     {bio && <p class="team-card__bio">{bio}</p>}
     {affiliation && <div class="team-card__affiliation">{affiliation}</div>}
-    {link && (
-      <a class="team-card__website" href={website} rel="noreferrer" target="_blank">
-        {link.kind === "linkedin" ? (
-          <svg
-            class="team-card__website-icon"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.75"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-12h4v1.5a4 4 0 0 1 4-1.5z" />
-            <rect x="2" y="9" width="4" height="12" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        ) : (
-          <svg
-            class="team-card__website-icon"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.75"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M2 12h20" />
-            <path d="M12 2a15 15 0 0 1 0 20" />
-            <path d="M12 2a15 15 0 0 0 0 20" />
-          </svg>
-        )}
-        <span class="team-card__website-label">{link.label}</span>
-      </a>
-    )}
   </div>
-</article>
+</Tag>

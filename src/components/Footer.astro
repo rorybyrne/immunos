@@ -1,5 +1,4 @@
 ---
-import Mark from "./Mark.astro";
 import "./Footer.css";
 
 interface Link {
@@ -23,12 +22,18 @@ interface Props {
 const { footer } = Astro.props;
 ---
 
-<footer class="footer">
+<footer class="footer" id="contact">
   <div class="shell footer__inner">
     <div class="footer__top">
       <div class="footer__signature">
         <div class="footer__lockup">
-          <Mark size={36} class="footer__mark" />
+          <img
+            class="footer__mark"
+            src="/brand/immunos-mark.png"
+            alt=""
+            width="36"
+            height="36"
+          />
           <span class="footer__wordmark">Immun<b>OS</b></span>
         </div>
         <p class="footer__blurb">{footer.blurb}</p>
@@ -40,7 +45,11 @@ const { footer } = Astro.props;
             <div class="footer__col">
               <div class="footer__col-title">{col.title}</div>
               {col.links.map((l) => (
-                <a class="footer__link" href={l.href}>
+                <a
+                  class="footer__link"
+                  href={l.href}
+                  {...(l.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+                >
                   {l.label}
                 </a>
               ))}

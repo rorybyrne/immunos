@@ -109,15 +109,19 @@
   .home-hero {
     min-height: 0;
     padding-block: var(--space-16);
+    display: block;
   }
 
   .home-hero__inner {
     grid-template-columns: 1fr;
     gap: var(--space-10);
-    justify-items: start;
+    width: 100%;
   }
 
-  .home-hero__headline { font-size: clamp(2rem, 8vw, 3rem); }
+  /* container-type can't infer inline-size from contents, so pin it. */
+  .home-hero__content { width: 100%; }
+
+  .home-hero__headline { font-size: clamp(2rem, 7.5vw, 2.75rem); }
 
   .home-hero__visual {
     width: 100%;
@@ -126,6 +130,22 @@
 }
 
 @media (max-width: 600px) {
-  .home-hero { padding-block: var(--space-12); }
+  .home-hero { padding-block: var(--space-10); }
+
+  .home-hero__inner { gap: var(--space-8); }
+
+  .home-hero__headline {
+    font-size: clamp(1.85rem, 8.5vw, 2.4rem);
+    line-height: 1.08;
+  }
+
+  .home-hero__lede {
+    margin-top: var(--space-5);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .home-hero__context { margin-top: var(--space-6); }
+
   .home-hero__visual { display: none; }
 }

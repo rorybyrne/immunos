@@ -17,34 +17,27 @@ const initials = (name: string) =>
     <!-- ===== Hero ===== -->
     <section class="aat-hero">
       <div class="shell aat-hero__inner">
-        <div class="aat-hero__copy">
-          <div class="aat-logos" aria-label="Hosted by ImmunOS and Pillar VC, powered by ARIA">
-            <span class="aat-logos__immunos">
-              <img src="/brand/immunos-mark.png" alt="" width="28" height="28" />
-              <span>Immun<b>OS</b></span>
-            </span>
-            <span class="aat-logos__sep" aria-hidden="true">×</span>
-            <span class="aat-logos__pillar">Pillar VC</span>
-            <img class="aat-logos__aria" src="/brand/aria-powered-by.png" alt="Powered by ARIA" width="92" height="52" />
-          </div>
-          <p class="aat-eyebrow aat-eyebrow--light">{event.hero.name}</p>
-          <h1 class="aat-hero__headline">{event.hero.headline}</h1>
-          <p class="aat-hero__sub">{event.hero.sub}</p>
-          <div class="aat-hero__ctas">
-            <a class="aat-btn aat-btn--primary" href={applyHref}>{applyLabel}</a>
-            <a class="aat-btn aat-btn--ghost" href="#get-involved">Partner with us</a>
-          </div>
-          <p class="aat-hero__hosts">{event.hero.hosts}</p>
+        <div class="aat-logos" aria-label="Hosted by ImmunOS and Pillar VC, powered by ARIA">
+          <span class="aat-logos__immunos">
+            <img src="/brand/immunos-mark.png" alt="" width="28" height="28" />
+            <span>Immun<b>OS</b></span>
+          </span>
+          <span class="aat-logos__sep" aria-hidden="true">×</span>
+          <span class="aat-logos__pillar">Pillar VC</span>
+          <img class="aat-logos__aria" src="/brand/aria-powered-by.png" alt="Powered by ARIA" width="92" height="52" />
         </div>
-
-        <dl class="aat-facts">
-          {event.hero.facts.map((f) => (
-            <div class="aat-facts__row">
-              <dt>{f.label}</dt>
-              <dd>{Array.isArray(f.value) ? f.value.map((v) => <span class="aat-facts__line">{v}</span>) : f.value}</dd>
-            </div>
-          ))}
-        </dl>
+        <p class="aat-eyebrow aat-eyebrow--light">{event.hero.name}</p>
+        <h1 class="aat-hero__headline">{event.hero.headline}</h1>
+        <p class="aat-hero__date">{event.hero.dates}</p>
+        <p class="aat-hero__where">{event.hero.where}</p>
+        <p class="aat-hero__sub">{event.hero.sub}</p>
+        <div class="aat-hero__ctas">
+          <a class="aat-btn aat-btn--primary" href={applyHref}>{applyLabel}</a>
+          <a class="aat-btn aat-btn--ghost" href="#agenda">See the agenda</a>
+        </div>
+        <p class="aat-hero__hosts">
+          {event.hero.hosts} <a href="#get-involved">Partner with us →</a>
+        </p>
       </div>
     </section>
 
@@ -115,7 +108,6 @@ const initials = (name: string) =>
             </article>
           ))}
         </div>
-        <p class="aat-note">{event.challenges.kit}</p>
       </div>
     </section>
 
@@ -257,10 +249,6 @@ const initials = (name: string) =>
               </Tag>
             );
           })}
-          <div class="aat-person aat-person--soon">
-            <div class="aat-person__photo"><span>+</span></div>
-            <h3>{event.judges.more}</h3>
-          </div>
         </div>
 
         <h2 class="aat-h2 aat-h2--spaced" id="mentors">Mentors</h2>

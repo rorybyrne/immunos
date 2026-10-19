@@ -1,34 +1,44 @@
 {
   "tabTitle": "Assay-A-Thon | Building an Experimental Validation Toolkit for AI-Enabled Discovery",
   "metaDescription": "First-of-kind life sciences prototyping hackathon, 6–8th November 2026, uniting wet-lab, engineering and computational scientists to develop experimental validation for AI-enabled discovery",
-
   "applyUrl": "",
   "applyOpens": "21 October 2026",
   "email": "research@immunos.bio",
   "partnerMailto": "mailto:research@immunos.bio?subject=Assay-A-Thon%20partnership",
-
   "nav": [
-    { "label": "Challenges", "href": "#challenges" },
-    { "label": "Who should apply", "href": "#who" },
-    { "label": "Partners", "href": "#partners" },
-    { "label": "Judges & Mentors", "href": "#judges" },
-    { "label": "Team", "href": "#team" },
-    { "label": "FAQs", "href": "/assay-a-thon/faq/" }
+    {
+      "label": "Challenges",
+      "href": "#challenges"
+    },
+    {
+      "label": "Who should apply",
+      "href": "#who"
+    },
+    {
+      "label": "Partners",
+      "href": "#partners"
+    },
+    {
+      "label": "Judges & Mentors",
+      "href": "#judges"
+    },
+    {
+      "label": "Team",
+      "href": "#team"
+    },
+    {
+      "label": "FAQs",
+      "href": "/assay-a-thon/faq/"
+    }
   ],
-
   "hero": {
     "name": "Assay-A-Thon",
     "headline": "Building an Experimental Validation Toolkit for AI-Enabled Discovery",
+    "dates": "Friday 6 – Sunday 8 November 2026",
+    "where": "London · Applications close Monday 2 November",
     "sub": "A weekend for experimental life scientists, engineers and computational experts tackling the validation bottleneck in AI-enabled discovery.",
-    "hosts": "Hosted by ImmunOS and Pillar VC. Powered by ARIA.",
-    "facts": [
-      { "label": "Dates", "value": "Friday 6 – Sunday 8 November 2026" },
-      { "label": "Times", "value": ["Fri 17:00–20:00", "Sat 09:00–19:00", "Sun 09:00–18:00"] },
-      { "label": "Venue", "value": "London — hosted by Pillar VC" },
-      { "label": "Apply by", "value": "Monday 2 November 2026" }
-    ]
+    "hosts": "Hosted by ImmunOS and Pillar VC. Powered by ARIA."
   },
-
   "problem": {
     "heading": "Discovery has outpaced validation",
     "intro": [
@@ -36,30 +46,54 @@
       "The Assay-A-Thon brings experimental, engineering and computational scientists together to ask: what validation toolkit does the new age of AI-enabled discovery need?"
     ],
     "steps": [
-      { "label": "AI hypotheses", "time": "hours to days", "point": "Discovery has outpaced validation." },
-      { "label": "The bench validates", "time": "weeks to months", "point": "Existing validation experiments were not designed for the AI-enabled era." },
-      { "label": "Assay-A-Thon", "time": "validation at AI scale", "point": "It’s time to build the validation toolkit using the combined insights of AI and experimental scientists." }
+      {
+        "label": "AI hypotheses",
+        "time": "hours to days",
+        "point": "Discovery has outpaced validation."
+      },
+      {
+        "label": "The bench validates",
+        "time": "weeks to months",
+        "point": "Existing validation experiments were not designed for the AI-enabled era."
+      },
+      {
+        "label": "Assay-A-Thon",
+        "time": "validation at AI scale",
+        "point": "It’s time to build the validation toolkit using the combined insights of AI and experimental scientists."
+      }
     ]
   },
-
   "about": {
     "immunos": "ImmunOS is an ARIA Innovation Circle dedicated to understanding immune intelligence: how it senses, computes, controls, and ultimately, how to catalyse translational work in the UK."
   },
-
   "challenges": {
     "intro": "ImmunOS has identified three challenges that belong in the validation toolkit: testing designed molecules, building new assay systems, and linking biological state to function — all purpose-built for AI-enabled discovery.",
-    "kit": "3D printers and laser cutters on site. Datasets and models to be listed per challenge.",
     "items": [
       {
         "name": "Protein Design",
         "description": "Structural prediction and generative design tools now produce more candidate binders, enzymes and immune modulators than any lab can test. Most never get past an in-silico confidence score, and the few that do are tested one at a time with assays built for a slower era. This challenge asks teams to build the validation layer: the assays, workflows and decision rules that tell us quickly and cheaply which predictions are real.",
         "focus": "This challenge focuses on closing the loop between design models and experimental evidence, for target discovery, immune modulation and synthetic circuits.",
         "themes": [
-          { "title": "Triage at scale", "text": "Rank hundreds of designed binders with the cheapest readout that still separates true hits from confident false positives." },
-          { "title": "From binding to function", "text": "Find the early assays that best predict whether a designed immune modulator will work in a cell-based immune assay." },
-          { "title": "Confidence you can trust", "text": "Benchmark model confidence scores against experimental data. When should we believe the model?" },
-          { "title": "Learning from failure", "text": "Capture negative results in a standard form so they can feed back into the next round of design." },
-          { "title": "Designing for the assay", "text": "Build validation in from the start. Which design choices make a protein easier to test?" }
+          {
+            "title": "Triage at scale",
+            "text": "Rank hundreds of designed binders with the cheapest readout that still separates true hits from confident false positives."
+          },
+          {
+            "title": "From binding to function",
+            "text": "Find the early assays that best predict whether a designed immune modulator will work in a cell-based immune assay."
+          },
+          {
+            "title": "Confidence you can trust",
+            "text": "Benchmark model confidence scores against experimental data. When should we believe the model?"
+          },
+          {
+            "title": "Learning from failure",
+            "text": "Capture negative results in a standard form so they can feed back into the next round of design."
+          },
+          {
+            "title": "Designing for the assay",
+            "text": "Build validation in from the start. Which design choices make a protein easier to test?"
+          }
         ]
       },
       {
@@ -67,11 +101,26 @@
         "description": "Automated labs can run experiments around the clock, but they are limited by the hardware they are given. Many of the measurements that would best test an AI prediction need physical control a standard plate cannot provide: precise fluid handling, defined cell environments, or cells placed exactly where a model says they should interact. Teams in this challenge design and prototype that hardware, either built on site with 3D printers and laser cutters or as a fully specified design.",
         "focus": "This challenge focuses on prototyping hardware for next-generation assays for complex models and automated workflows.",
         "themes": [
-          { "title": "Microfluidics", "text": "Modules for droplet generation, gradient formation or sorting that can be printed, cut and assembled cheaply." },
-          { "title": "Environmental control", "text": "Devices that set oxygen, shear, temperature or confinement so assay conditions are reproducible across labs." },
-          { "title": "Spatial patterning", "text": "Tools that position cells or reagents to test predicted cell–cell interactions." },
-          { "title": "Automation-ready", "text": "Open, low-cost hardware that docks into liquid handlers and cloud labs rather than living on one bench." },
-          { "title": "Readouts", "text": "Simple sensors or imaging set-ups that turn a manual bench assay into a continuous data stream." }
+          {
+            "title": "Microfluidics",
+            "text": "Modules for droplet generation, gradient formation or sorting that can be printed, cut and assembled cheaply."
+          },
+          {
+            "title": "Environmental control",
+            "text": "Devices that set oxygen, shear, temperature or confinement so assay conditions are reproducible across labs."
+          },
+          {
+            "title": "Spatial patterning",
+            "text": "Tools that position cells or reagents to test predicted cell–cell interactions."
+          },
+          {
+            "title": "Automation-ready",
+            "text": "Open, low-cost hardware that docks into liquid handlers and cloud labs rather than living on one bench."
+          },
+          {
+            "title": "Readouts",
+            "text": "Simple sensors or imaging set-ups that turn a manual bench assay into a continuous data stream."
+          }
         ]
       },
       {
@@ -79,154 +128,353 @@
         "description": "Omics technologies enable high-dimensional measurement of biological responses at scale, while AI models increasingly aim to predict those responses. Yet functional validation remains harder to scale: many phenotypic assays are lower-throughput, costly, or difficult to manufacture and deploy reproducibly. This challenge asks teams to develop assays that capture functional readouts leveraging omics infrastructure to improve the throughput and standardization of experimental validation, making it possible to test AI-generated hypotheses at scale.",
         "focus": "This challenge focuses on high-throughput functional assays spanning sample and library prep, omics and NGS workflows, and functional readouts.",
         "themes": [
-          { "title": "Link state to function", "text": "Connect molecular profiles to functional readouts such as secretion, killing and migration in the same cells." },
-          { "title": "Do more with less", "text": "Design assays to find the minimum cells, perturbations and conditions needed to confirm or refute a model prediction." },
-          { "title": "Ground truth for models", "text": "Design assays to generate benchmark datasets designed to reveal where predictions succeed and fail." },
-          { "title": "Measure function at scale", "text": "Make functional phenotyping higher-throughput and more cost-effective, particularly for complex immune-cell behaviors." }
+          {
+            "title": "Link state to function",
+            "text": "Connect molecular profiles to functional readouts such as secretion, killing and migration in the same cells."
+          },
+          {
+            "title": "Do more with less",
+            "text": "Design assays to find the minimum cells, perturbations and conditions needed to confirm or refute a model prediction."
+          },
+          {
+            "title": "Ground truth for models",
+            "text": "Design assays to generate benchmark datasets designed to reveal where predictions succeed and fail."
+          },
+          {
+            "title": "Measure function at scale",
+            "text": "Make functional phenotyping higher-throughput and more cost-effective, particularly for complex immune-cell behaviors."
+          }
         ]
       }
     ]
   },
-
   "who": {
     "intro": "The Assay-A-Thon is built around the value of intersectional collaboration. We are looking for experimental, engineering, and computational scientists who are interested in bridging the gap between a hypothetical target and a validated result.",
     "profiles": [
-      { "title": "Wet-lab scientists", "text": "Assay development, protein biochemistry, cell biology, immunology, single-cell and NGS workflows." },
-      { "title": "Engineers", "text": "Materials, 3D printing and modelling, hardware, instrumentation, microfluidics and lab automation." },
-      { "title": "Computational scientists", "text": "Protein design and ML, bioinformatics, statistics, data and pipeline engineering." }
+      {
+        "title": "Wet-lab scientists",
+        "text": "Assay development, protein biochemistry, cell biology, immunology, single-cell and NGS workflows."
+      },
+      {
+        "title": "Engineers",
+        "text": "Materials, 3D printing and modelling, hardware, instrumentation, microfluidics and lab automation."
+      },
+      {
+        "title": "Computational scientists",
+        "text": "Protein design and ML, bioinformatics, statistics, data and pipeline engineering."
+      }
     ],
     "details": [
-      { "label": "Who is eligible", "value": "PhD students, postdocs, industry scientists and engineers, and founders — from academia, biotech or industry." },
-      { "label": "Location", "value": "Open to applicants anywhere who can attend in person in London." },
-      { "label": "Apply as", "value": "Individuals or pre-formed teams of 4–5. Solo applicants are matched into mixed wet-lab, computational and engineering teams." },
-      { "label": "Places", "value": "9 teams (3 per challenge) of 4–5 people — roughly 36–45 participants." },
-      { "label": "On site", "value": "3D printers and laser cutters for prototyping. Solutions can be hardware or theoretical." },
-      { "label": "Bring", "value": "Laptop, charger and any files or materials you want to prototype with." },
-      { "label": "Food", "value": "All meals provided; dietary requirements collected on the application form." },
-      { "label": "Accessibility", "value": "Need adjustments? Email research@immunos.bio and we will work with you." },
-      { "label": "IP", "value": "Teams own what they build." }
+      {
+        "label": "Who is eligible",
+        "value": "PhD students, postdocs, industry scientists and engineers, and founders — from academia, biotech or industry."
+      },
+      {
+        "label": "Location",
+        "value": "Open to applicants anywhere who can attend in person in London."
+      },
+      {
+        "label": "Apply as",
+        "value": "Individuals or pre-formed teams of 4–5. Solo applicants are matched into mixed wet-lab, computational and engineering teams."
+      },
+      {
+        "label": "Places",
+        "value": "9 teams (3 per challenge) of 4–5 people — roughly 36–45 participants."
+      },
+      {
+        "label": "On site",
+        "value": "3D printers and laser cutters for prototyping. Solutions can be hardware or theoretical."
+      },
+      {
+        "label": "Bring",
+        "value": "Laptop, charger and any files or materials you want to prototype with."
+      },
+      {
+        "label": "Food",
+        "value": "All meals provided; dietary requirements collected on the application form."
+      },
+      {
+        "label": "Accessibility",
+        "value": "Need adjustments? Email research@immunos.bio and we will work with you."
+      },
+      {
+        "label": "IP",
+        "value": "Teams own what they build."
+      }
     ]
   },
-
   "apply": {
     "howItWorks": "Apply to attend by Monday the 2nd of November. Organisers review applications on a rolling basis and send invitations, so apply early.",
     "criteria": "Relevant skills, motivation, and the mix each applicant adds to a team across wet-lab, computational and engineering expertise.",
     "dates": [
-      { "milestone": "Applications open", "date": "21 October 2026", "note": "" },
-      { "milestone": "Application deadline", "date": "Monday 2 November 2026", "note": "" },
-      { "milestone": "Decisions sent", "date": "Rolling", "note": "" },
-      { "milestone": "Pre-event briefing / team matching", "date": "Online, w/c 2 November", "note": "Challenge briefs and team matching for solo applicants" },
-      { "milestone": "Event", "date": "6–8 November 2026", "note": "" },
-      { "milestone": "Winners announced / recap published", "date": "Winners on Sun 8 Nov; recap w/c 16 Nov", "note": "Recap on The ImmunOS Dispatch" }
+      {
+        "milestone": "Applications open",
+        "date": "21 October 2026",
+        "note": ""
+      },
+      {
+        "milestone": "Application deadline",
+        "date": "Monday 2 November 2026",
+        "note": ""
+      },
+      {
+        "milestone": "Decisions sent",
+        "date": "Rolling",
+        "note": ""
+      },
+      {
+        "milestone": "Pre-event briefing / team matching",
+        "date": "Online, w/c 2 November",
+        "note": "Challenge briefs and team matching for solo applicants"
+      },
+      {
+        "milestone": "Event",
+        "date": "6–8 November 2026",
+        "note": ""
+      },
+      {
+        "milestone": "Winners announced / recap published",
+        "date": "Winners on Sun 8 Nov; recap w/c 16 Nov",
+        "note": "Recap on The ImmunOS Dispatch"
+      }
     ]
   },
-
   "agenda": [
     {
       "day": "Fri 6 Nov",
       "sessions": [
-        { "time": "17:00", "session": "Registration" },
-        { "time": "17:30", "session": "Welcome and challenge briefs" },
-        { "time": "18:30", "session": "Networking + team formation" }
+        {
+          "time": "17:00",
+          "session": "Registration"
+        },
+        {
+          "time": "17:30",
+          "session": "Welcome and challenge briefs"
+        },
+        {
+          "time": "18:30",
+          "session": "Networking + team formation"
+        }
       ]
     },
     {
       "day": "Sat 7 Nov",
       "sessions": [
-        { "time": "09:00", "session": "Breakfast + orientation" },
-        { "time": "09:30–12:00", "session": "Build session" },
-        { "time": "12:00–13:00", "session": "Lunch + mentor intros" },
-        { "time": "13:00–19:00", "session": "Build session 2 + mentor check-in" }
+        {
+          "time": "09:00",
+          "session": "Breakfast + orientation"
+        },
+        {
+          "time": "09:30–12:00",
+          "session": "Build session"
+        },
+        {
+          "time": "12:00–13:00",
+          "session": "Lunch + mentor intros"
+        },
+        {
+          "time": "13:00–19:00",
+          "session": "Build session 2 + mentor check-in"
+        }
       ]
     },
     {
       "day": "Sun 8 Nov",
       "sessions": [
-        { "time": "09:00", "session": "Breakfast; final build and demo prep" },
-        { "time": "14:30", "session": "Demos + pitches and judging" },
-        { "time": "16:30", "session": "Awards — Litmus Science Validation Prize and additional prizes" },
-        { "time": "17:15", "session": "Closing drinks + networking (doors close 18:00)" }
+        {
+          "time": "09:00",
+          "session": "Breakfast; final build and demo prep"
+        },
+        {
+          "time": "14:30",
+          "session": "Demos + pitches and judging"
+        },
+        {
+          "time": "16:30",
+          "session": "Awards — Litmus Science Validation Prize and additional prizes"
+        },
+        {
+          "time": "17:15",
+          "session": "Closing drinks + networking (doors close 18:00)"
+        }
       ]
     }
   ],
-
   "judging": [
-    { "criterion": "Scientific rigour", "detail": "Does the validation answer the question the AI output actually poses?" },
-    { "criterion": "Technical feasibility & build quality", "detail": "Does the prototype or assay work, and could it be built again?" },
-    { "criterion": "Scalability", "detail": "Could it run at AI scale or plug into automated labs?" },
-    { "criterion": "Translational / commercial potential", "detail": "Is there a path to real-world use?" },
-    { "criterion": "Live demo", "detail": "Clarity of the targeted problem and solution." }
+    {
+      "criterion": "Scientific rigour",
+      "detail": "Does the validation answer the question the AI output actually poses?"
+    },
+    {
+      "criterion": "Technical feasibility & build quality",
+      "detail": "Does the prototype or assay work, and could it be built again?"
+    },
+    {
+      "criterion": "Scalability",
+      "detail": "Could it run at AI scale or plug into automated labs?"
+    },
+    {
+      "criterion": "Translational / commercial potential",
+      "detail": "Is there a path to real-world use?"
+    },
+    {
+      "criterion": "Live demo",
+      "detail": "Clarity of the targeted problem and solution."
+    }
   ],
-
   "prize": {
     "name": "Litmus Science Validation Prize",
     "text": "Whether it's a new binder, a new assay or a new device, the Litmus Science Validation Prize gives the winning team a funded, head-to-head experiment against the existing validation gold standard in a real lab, and the first real evidence of what their idea can do.",
     "by": "Litmus Science",
     "additional": "Additional prizes, including validation resources and bench access — announcing soon."
   },
-
   "partners": {
     "heading": "Meet Our Partners",
-    "host": { "name": "Pillar VC", "href": "https://pillar.vc" },
+    "host": {
+      "name": "Pillar VC",
+      "href": "https://pillar.vc"
+    },
     "wall": [
-      { "name": "ARIA", "href": "https://aria.org.uk" },
-      { "name": "Litmus Science", "href": "https://litmus.science" },
-      { "name": "Lightcast Discovery", "href": "https://www.lightcast.bio/" },
-      { "name": "Full Circle Labs", "href": "https://fullcirclelabs.bio" },
-      { "name": "Flowmatter", "href": "" }
+      {
+        "name": "ARIA",
+        "href": "https://aria.org.uk"
+      },
+      {
+        "name": "Litmus Science",
+        "href": "https://litmus.science"
+      },
+      {
+        "name": "Lightcast Discovery",
+        "href": "https://www.lightcast.bio/"
+      },
+      {
+        "name": "Full Circle Labs",
+        "href": "https://fullcirclelabs.bio"
+      },
+      {
+        "name": "Flowmatter",
+        "href": ""
+      }
     ]
   },
-
   "aria": {
     "heading": "Powered by ARIA",
     "text": "The Assay-A-Thon is designed by ImmunOS, an ARIA Innovation Circle exploring the immune system through the lens of an operating system. Our focus on immunity closely aligns with ARIA’s Sustained Viral Resilience programme, which is developing new approaches, tools and platforms for engineering innate immunity. The Assay-A-Thon extends this shared ambition by tackling a critical bottleneck: scalable experimental validation for AI-enabled biology.",
     "programmeLabel": "Sustained Viral Resilience programme",
     "programmeHref": "https://aria.org.uk/opportunity-spaces/programmable-physiology/sustained-viral-resilience"
   },
-
   "judges": {
     "intro": "Founders, investors and hardware and AI leaders judging technical feasibility, build quality and translational potential.",
     "people": [
-      { "name": "Brian Wang", "title": "Programme Director, Sustained Viral Resilience", "org": "ARIA", "href": "https://www.linkedin.com/in/bscwang/", "photo": "/judges/brian-wang.jpg" },
-      { "name": "Arun Nijhawan", "title": "CEO", "org": "Litmus Science", "href": "https://litmus.science", "photo": "/judges/arun-nijhawan.jpg" },
-      { "name": "Michael Crone", "title": "CEO", "org": "Full Circle Labs", "href": "https://fullcirclelabs.bio/team", "photo": "/judges/michael-crone.jpg" }
-    ],
-    "more": "More judges to be announced"
+      {
+        "name": "Arun Nijhawan",
+        "title": "CEO",
+        "org": "Litmus Science",
+        "href": "https://litmus.science",
+        "photo": "/judges/arun-nijhawan.jpg"
+      },
+      {
+        "name": "Brian Wang",
+        "title": "Programme Director",
+        "org": "ARIA",
+        "href": "https://www.linkedin.com/in/bscwang/",
+        "photo": "/judges/brian-wang.jpg"
+      },
+      {
+        "name": "Michael Crone",
+        "title": "CEO",
+        "org": "Full Circle Labs",
+        "href": "https://fullcirclelabs.bio/team",
+        "photo": "/judges/michael-crone.jpg"
+      }
+    ]
   },
-
   "mentors": {
     "intro": "Mentors span wet-lab, engineering and computational expertise, and are shared across all three challenges.",
     "people": [],
     "more": "Mentors announcing soon"
   },
-
   "team": [
-    { "name": "Nile Verleur", "role": "Co-lead, ImmunOS", "title": "PhD, Oxford Vaccine Group", "href": "https://www.linkedin.com/in/nile-verleur/", "photo": "/team/nile.png" },
-    { "name": "Dr Alex Ainscough", "role": "Co-lead, ImmunOS", "title": "Assistant Professor, Imperial College London", "href": "https://www.linkedin.com/in/alexanderjainscough/", "photo": "/team/alex.jpg" },
-    { "name": "Anjali Chadha", "role": "ImmunOS member", "title": "PhD, Francis Crick Institute", "href": "https://www.linkedin.com/in/anjali-chadha-mit/", "photo": "/team/anjali.png" }
+    {
+      "name": "Nile Verleur",
+      "role": "Co-lead, ImmunOS",
+      "title": "PhD, Oxford Vaccine Group",
+      "href": "https://www.linkedin.com/in/nile-verleur/",
+      "photo": "/team/nile.png"
+    },
+    {
+      "name": "Alex Ainscough",
+      "role": "Co-lead, ImmunOS",
+      "title": "Assistant Professor, Imperial College London",
+      "href": "https://www.linkedin.com/in/alexanderjainscough/",
+      "photo": "/team/alex.jpg"
+    },
+    {
+      "name": "Anjali Chadha",
+      "role": "ImmunOS member",
+      "title": "PhD, Francis Crick Institute",
+      "href": "https://www.linkedin.com/in/anjali-chadha-mit/",
+      "photo": "/team/anjali.png"
+    }
   ],
-
   "involved": {
     "heading": "Help build Assay-A-Thon",
     "text": "We are still welcoming partners and mentors. Partners can offer prizes, prototyping credits, CAD and print licences, reagents, bench access, compute or follow-on mentorship, and in return get co-branding across the event and recap, and first look at the tools, teams and methods that emerge."
   },
-
   "faqs": [
-    { "q": "Who can apply?", "a": "PhD students, postdocs, industry scientists and engineers, and founders from academia, biotech or industry, based anywhere, as long as you can attend in London." },
-    { "q": "When and where is it?", "a": "6–8 November 2026 in London, hosted by Pillar VC. The exact address is shared with accepted applicants." },
-    { "q": "Do I need a team?", "a": "No. Apply on your own or as a pre-formed team of 4–5. We match solo applicants into mixed teams of wet-lab, computational and engineering expertise." },
-    { "q": "Do I need to attend all three days?", "a": "Yes. Teams build together from Friday evening to the Sunday demos, so please only apply if you can attend all three days." },
-    { "q": "Does it cost anything? Are travel costs covered?", "a": "It is free to participate, but travel is not covered." },
-    { "q": "Will there be wet-lab or bench access on site?", "a": "There is no requirement to run experiments on site. We provide 3D printers and laser cutters for prototyping, and solutions can be hardware or theoretical." },
-    { "q": "What hardware and tools will be available?", "a": "3D printers and laser cutters. Further tools and datasets will be listed per challenge." },
-    { "q": "Who owns the IP for what we build?", "a": "Teams own what they build." },
-    { "q": "Is food provided? Can you cater for dietary needs?", "a": "Yes — all meals are provided. Tell us your dietary requirements on the application form." },
-    { "q": "Is the venue accessible?", "a": "Email research@immunos.bio for details and we will make adjustments accordingly." },
-    { "q": "What can we win?", "a": "The overall winner receives the Litmus Science Validation Prize: a funded, head-to-head experiment against the comparable gold standard validation experiment in a real lab. Additional prizes, including cash and validation resources, are open to all teams across the three challenges." },
-    { "q": "Will there be photography / filming?", "a": "Yes. We will photograph and film parts of the event for ImmunOS and partner channels. Let the team know on arrival if you would prefer not to appear." },
-    { "q": "Who do I contact with questions?", "a": "research@immunos.bio" }
+    {
+      "q": "Who can apply?",
+      "a": "PhD students, postdocs, industry scientists and engineers, and founders from academia, biotech or industry, based anywhere, as long as you can attend in London."
+    },
+    {
+      "q": "When and where is it?",
+      "a": "6–8 November 2026 in London, hosted by Pillar VC. The exact address is shared with accepted applicants."
+    },
+    {
+      "q": "Do I need a team?",
+      "a": "No. Apply on your own or as a pre-formed team of 4–5. We match solo applicants into mixed teams of wet-lab, computational and engineering expertise."
+    },
+    {
+      "q": "Do I need to attend all three days?",
+      "a": "Yes. Teams build together from Friday evening to the Sunday demos, so please only apply if you can attend all three days."
+    },
+    {
+      "q": "Does it cost anything? Are travel costs covered?",
+      "a": "It is free to participate, but travel is not covered."
+    },
+    {
+      "q": "Will there be wet-lab or bench access on site?",
+      "a": "There is no requirement to run experiments on site. We provide 3D printers and laser cutters for prototyping, and solutions can be hardware or theoretical."
+    },
+    {
+      "q": "What hardware and tools will be available?",
+      "a": "3D printers and laser cutters. Further tools and datasets will be listed per challenge."
+    },
+    {
+      "q": "Who owns the IP for what we build?",
+      "a": "Teams own what they build."
+    },
+    {
+      "q": "Is food provided? Can you cater for dietary needs?",
+      "a": "Yes — all meals are provided. Tell us your dietary requirements on the application form."
+    },
+    {
+      "q": "Is the venue accessible?",
+      "a": "Email research@immunos.bio for details and we will make adjustments accordingly."
+    },
+    {
+      "q": "What can we win?",
+      "a": "The overall winner receives the Litmus Science Validation Prize: a funded, head-to-head experiment against the comparable gold standard validation experiment in a real lab. Additional prizes, including cash and validation resources, are open to all teams across the three challenges."
+    },
+    {
+      "q": "Will there be photography / filming?",
+      "a": "Yes. We will photograph and film parts of the event for ImmunOS and partner channels. Let the team know on arrival if you would prefer not to appear."
+    },
+    {
+      "q": "Who do I contact with questions?",
+      "a": "research@immunos.bio"
+    }
   ],
-
   "footer": {
     "line": "Assay-A-Thon · London · 6–8 November 2026",
     "consent": "By attending, you agree that you may appear in event photography and video. Tell us on arrival if you would prefer not to.",

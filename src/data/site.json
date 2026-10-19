@@ -12,6 +12,11 @@
       ]
     },
     {
+      "id": "event",
+      "label": "Assay-A-Thon",
+      "href": "/assay-a-thon/"
+    },
+    {
       "id": "reading",
       "label": "Reading",
       "href": "/#thinking"

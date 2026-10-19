@@ -80,7 +80,11 @@ const { activePage, nav } = Astro.props;
           }
 
           return (
-            <a class="nav-link" href={item.href}>
+            <a
+              class:list={["nav-link", { "is-active": item.id === activePage }]}
+              href={item.href}
+              aria-current={item.id === activePage ? "page" : undefined}
+            >
               {item.label}
             </a>
           );

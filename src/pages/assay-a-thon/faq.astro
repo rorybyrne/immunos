@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import EventBar from "../../components/EventBar.astro";
+import "../../styles/assay-a-thon.css";
+import event from "../../data/assay-a-thon.json";
+
+/* Turn the contact address inside answers into a mailto link. */
+const linkEmail = (text: string) =>
+  text.replaceAll(event.email, `<a href="mailto:${event.email}">${event.email}</a>`);
+---
+
+<Layout activePage="event" tabTitle="FAQs | Assay-A-Thon" description={event.metaDescription}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" />
+  </Fragment>
+
+  <div class="aat" id="top">
+    <EventBar base="/assay-a-thon/" />
+
+    <section class="section">
+      <div class="shell aat-faq">
+        <a class="aat-back" href="/assay-a-thon/">← Back to Assay-A-Thon</a>
+        <h1 class="aat-h2">Frequently asked questions</h1>
+        <div class="aat-faq__list">
+          {event.faqs.map((f) => (
+            <details class="aat-faq__item">
+              <summary>{f.q}</summary>
+              <p set:html={linkEmail(f.a)} />
+            </details>
+          ))}
+        </div>
+        <p class="aat-prose">
+          Anything else? Email <a href={`mailto:${event.email}`}>{event.email}</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="aat-foot">
+      <div class="shell aat-foot__inner">
+        <p class="aat-foot__line">{event.footer.line}</p>
+        <p class="aat-foot__small">{event.footer.consent}</p>
+      </div>
+    </section>
+  </div>
+</Layout>

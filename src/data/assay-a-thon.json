@@ -187,9 +187,9 @@
   "judges": {
     "intro": "Founders, investors and hardware and AI leaders judging technical feasibility, build quality and translational potential.",
     "people": [
-      { "name": "Brian Wang", "title": "Programme Director, Sustained Viral Resilience", "org": "ARIA", "href": "https://www.linkedin.com/in/bscwang/", "photo": "" },
+      { "name": "Brian Wang", "title": "Programme Director, Sustained Viral Resilience", "org": "ARIA", "href": "https://www.linkedin.com/in/bscwang/", "photo": "/judges/brian-wang.jpg" },
       { "name": "Arun Nijhawan", "title": "CEO", "org": "Litmus Science", "href": "", "photo": "" },
-      { "name": "Michael Crone", "title": "CEO", "org": "Full Circle Labs", "href": "", "photo": "" }
+      { "name": "Michael Crone", "title": "CEO", "org": "Full Circle Labs", "href": "https://fullcirclelabs.bio/team", "photo": "/judges/michael-crone.jpg" }
     ],
     "more": "More judges to be announced"
   },
@@ -202,7 +202,7 @@
 
   "team": [
     { "name": "Nile Verleur", "role": "Co-lead, ImmunOS", "title": "PhD, Oxford Vaccine Group", "href": "https://www.linkedin.com/in/nile-verleur/", "photo": "/team/nile.png" },
-    { "name": "Prof Alex Ainscough", "role": "Co-lead, ImmunOS", "title": "Associate Professor, Imperial College London", "href": "https://www.linkedin.com/in/alexanderjainscough/", "photo": "/team/alex.jpg" },
+    { "name": "Dr Alex Ainscough", "role": "Co-lead, ImmunOS", "title": "Assistant Professor, Imperial College London", "href": "https://www.linkedin.com/in/alexanderjainscough/", "photo": "/team/alex.jpg" },
     { "name": "Anjali Chadha", "role": "ImmunOS member", "title": "PhD, Francis Crick Institute", "href": "https://www.linkedin.com/in/anjali-chadha-mit/", "photo": "/team/anjali.png" }
   ],
 

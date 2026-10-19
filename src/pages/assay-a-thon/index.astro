@@ -19,17 +19,16 @@ const initials = (name: string) =>
       <div class="shell aat-hero__inner">
         <div class="aat-logos" aria-label="Hosted by ImmunOS and Pillar VC, powered by ARIA">
           <span class="aat-logos__immunos">
-            <img src="/brand/immunos-mark.png" alt="" width="28" height="28" />
+            <img src="/brand/immunos-mark.png" alt="" width="44" height="44" />
             <span>Immun<b>OS</b></span>
           </span>
           <span class="aat-logos__sep" aria-hidden="true">×</span>
           <span class="aat-logos__pillar">Pillar VC</span>
-          <img class="aat-logos__aria" src="/brand/aria-powered-by.png" alt="Powered by ARIA" width="92" height="52" />
+          <img class="aat-logos__aria" src="/brand/aria-powered-by.png" alt="Powered by ARIA" width="140" height="79" />
         </div>
-        <p class="aat-eyebrow aat-eyebrow--light">{event.hero.name}</p>
+        <p class="aat-hero__present">{event.hero.present}</p>
         <h1 class="aat-hero__headline">{event.hero.headline}</h1>
         <p class="aat-hero__date">{event.hero.dates}</p>
-        <p class="aat-hero__where">{event.hero.where}</p>
         <p class="aat-hero__sub">{event.hero.sub}</p>
         <div class="aat-hero__ctas">
           <a class="aat-btn aat-btn--primary" href={applyHref}>{applyLabel}</a>
@@ -60,23 +59,6 @@ const initials = (name: string) =>
             </li>
           ))}
         </ol>
-      </div>
-    </section>
-
-    <!-- ===== Powered by ARIA ===== -->
-    <section class="aat-aria">
-      <div class="shell aat-aria__inner">
-        <div>
-          <h2 class="aat-h2">{event.aria.heading}</h2>
-          <p class="aat-prose">
-            {event.aria.text}{" "}
-            Read more about ARIA’s{" "}
-            <a href={event.aria.programmeHref} target="_blank" rel="noreferrer">{event.aria.programmeLabel}</a>.
-          </p>
-        </div>
-        <a class="aat-aria__badge" href="https://aria.org.uk" target="_blank" rel="noreferrer">
-          <img src="/brand/aria-powered-by.png" alt="Powered by ARIA" width="220" height="124" />
-        </a>
       </div>
     </section>
 
@@ -286,6 +268,23 @@ const initials = (name: string) =>
           <p class="aat-prose">{event.involved.text}</p>
         </div>
         <a class="aat-btn aat-btn--primary" href={event.partnerMailto}>Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ===== Powered by ARIA ===== -->
+    <section class="aat-aria">
+      <div class="shell aat-aria__inner">
+        <div>
+          <h2 class="aat-h2">{event.aria.heading}</h2>
+          <p class="aat-prose">
+            {event.aria.text}{" "}
+            Read more about ARIA’s{" "}
+            <a href={event.aria.programmeHref} target="_blank" rel="noreferrer">{event.aria.programmeLabel}</a>.
+          </p>
+        </div>
+        <a class="aat-aria__badge" href="https://aria.org.uk" target="_blank" rel="noreferrer">
+          <img src="/brand/aria-powered-by.png" alt="Powered by ARIA" width="220" height="124" />
+        </a>
       </div>
     </section>
 

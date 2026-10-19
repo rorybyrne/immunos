@@ -189,16 +189,18 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--space-4);
-  margin-bottom: var(--space-10);
-  font-size: 17px;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+  font-size: 26px;
 }
-.aat-logos__immunos { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; }
+.aat-logos__immunos { display: inline-flex; align-items: center; gap: 12px; font-weight: 500; }
+.aat-logos__immunos img { width: 44px; height: 44px; }
 .aat-logos__immunos b { font-weight: 700; }
 .aat-logos__immunos img { filter: brightness(0) invert(1); }
 .aat-logos__sep { opacity: 0.6; }
 .aat-logos__pillar { font-weight: 700; letter-spacing: 0.01em; }
 .aat-logos__aria {
-  width: 92px;
+  width: 140px;
   height: auto;
   margin-left: var(--space-3);
   padding-left: var(--space-4);
@@ -222,25 +224,24 @@
   margin: 0;
   font-family: var(--aat-display);
   font-weight: 500;
-  font-variation-settings: "opsz" 72;
-  font-size: 72px;
+  font-variation-settings: "opsz" 48;
+  font-size: 40px;
   line-height: 1.05;
   letter-spacing: -0.01em;
   color: #fff;
   text-wrap: balance;
 }
 
-.aat-hero__where {
-  margin: var(--space-4) 0 var(--space-8);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: var(--tr-mono-caps);
-  text-transform: uppercase;
-  color: #A9D3B4;
+.aat-hero__present {
+  margin: 0 0 var(--space-5);
+  font-size: 19px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
 }
 
+
 .aat-hero__sub {
-  margin: 0 0 var(--space-8);
+  margin: var(--space-6) 0 var(--space-8);
   max-width: 620px;
   font-size: 19px;
   line-height: 1.6;
@@ -257,14 +258,17 @@
 @media (max-width: 900px) {
   .aat-hero { padding-block: 48px 56px; }
   .aat-hero__headline { font-size: 38px; }
-  .aat-hero__date { font-size: 54px; }
+  .aat-hero__date { font-size: 32px; }
+  .aat-logos { font-size: 22px; }
   .aat-hero__sub { font-size: 17px; }
 }
 
 @media (max-width: 480px) {
   .aat-hero__headline { font-size: 30px; }
-  .aat-hero__date { font-size: 40px; }
-  .aat-logos__aria { margin-left: 0; }
+  .aat-hero__date { font-size: 26px; }
+  .aat-logos { font-size: 19px; gap: var(--space-4); }
+  .aat-logos__immunos img { width: 34px; height: 34px; }
+  .aat-logos__aria { width: 110px; margin-left: 0; padding-left: 0; border-left: 0; flex-basis: 100%; max-width: 110px; margin-inline: auto; }
 }
 
 /* ---- Two-column split -------------------------------------------- */

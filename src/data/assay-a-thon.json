@@ -33,9 +33,9 @@
   ],
   "hero": {
     "name": "Assay-A-Thon",
+    "present": "present London’s first Assay-A-Thon:",
     "headline": "Building an Experimental Validation Toolkit for AI-Enabled Discovery",
     "dates": "Friday 6 – Sunday 8 November 2026",
-    "where": "London · Applications close Monday 2 November",
     "sub": "A weekend for experimental life scientists, engineers and computational experts tackling the validation bottleneck in AI-enabled discovery.",
     "hosts": "Hosted by ImmunOS and Pillar VC. Powered by ARIA."
   },
@@ -418,7 +418,7 @@
     }
   ],
   "involved": {
-    "heading": "Help build Assay-A-Thon",
+    "heading": "Assay-A-Thon Sponsorship opportunities",
     "text": "We are still welcoming partners and mentors. Partners can offer prizes, prototyping credits, CAD and print licences, reagents, bench access, compute or follow-on mentorship, and in return get co-branding across the event and recap, and first look at the tools, teams and methods that emerge."
   },
   "faqs": [

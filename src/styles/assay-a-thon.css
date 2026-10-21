@@ -166,10 +166,10 @@
   .aat-bar__nav { order: 3; width: 100%; margin-left: 0; }
 }
 
-/* While the site masthead is in use (e.g. "The Circle" dropdown open), lift it
-   above the event bar so its menu isn't hidden. */
-.masthead:hover,
-.masthead:focus-within { z-index: 70; }
+/* On the event page the site masthead scrolls away and the event bar takes
+   the top of the screen alone — two stacked sticky bars of different heights
+   let the cream masthead peek out under the navy bar. */
+body:has(.aat) .masthead { position: relative; }
 
 /* ---- Hero --------------------------------------------------------- */
 

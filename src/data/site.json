@@ -3,29 +3,11 @@
   "siteTitle": "ImmunOS",
   "tagline": "An ARIA Innovator Circle exploring immunology and AI as two views of the same problem.",
   "nav": [
-    {
-      "id": "circle",
-      "label": "The Circle",
-      "children": [
-        { "id": "team",     "label": "Team",     "href": "/team/" },
-        { "id": "meetings", "label": "Meetings", "href": "/meetings/" }
-      ]
-    },
-    {
-      "id": "event",
-      "label": "Assay-A-Thon",
-      "href": "/assay-a-thon/"
-    },
-    {
-      "id": "reading",
-      "label": "Reading",
-      "href": "/#thinking"
-    },
-    {
-      "id": "contact",
-      "label": "Contact",
-      "href": "#contact"
-    }
+    { "id": "team",     "label": "Core Team",    "href": "/team/" },
+    { "id": "event",    "label": "Assay-A-Thon", "href": "/assay-a-thon/" },
+    { "id": "meetings", "label": "Meetings",     "href": "/meetings/" },
+    { "id": "reading",  "label": "Reading",      "href": "/#thinking" },
+    { "id": "contact",  "label": "Contact",      "href": "#contact" }
   ],
   "home": {
     "headline": "The immune system is <br />a biological operating system.",

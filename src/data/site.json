@@ -39,6 +39,11 @@
     "substackLabel": "All posts on Substack →",
     "posts": [
       {
+        "title": "Checkpoint Failure: What happens when immunity is not installed?",
+        "image": "/substack/substack3broad.jpeg",
+        "href": "https://immunos.substack.com/p/checkpoint-failure-what-happens-when"
+      },
+      {
         "title": "J. Kwok: A Living Venn Diagram of the Biotech Ecosystem",
         "image": "/substack/substack2broad.jpeg",
         "href": "https://substack.com/home/post/p-203367732"

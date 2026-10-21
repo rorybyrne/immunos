@@ -361,7 +361,8 @@
     "heading": "Powered by ARIA",
     "text": "The Assay-A-Thon is designed by ImmunOS, an ARIA Innovation Circle exploring the immune system through the lens of an operating system. Our focus on immunity closely aligns with ARIA’s Sustained Viral Resilience programme, which is developing new approaches, tools and platforms for engineering innate immunity. The Assay-A-Thon extends this shared ambition by tackling a critical bottleneck: scalable experimental validation for AI-enabled biology.",
     "programmeLabel": "Sustained Viral Resilience programme",
-    "programmeHref": "https://aria.org.uk/opportunity-spaces/programmable-physiology/sustained-viral-resilience"
+    "programmeHref": "https://aria.org.uk/opportunity-spaces/programmable-physiology/sustained-viral-resilience",
+    "circlesHref": "https://aria.org.uk/innovator-circles"
   },
   "judges": {
     "intro": "Founders, investors and hardware and AI leaders judging technical feasibility, build quality and translational potential.",

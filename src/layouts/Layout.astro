@@ -9,11 +9,13 @@ import site from "../data/site.json";
 interface Props {
   title?: string;
   description?: string;
-  activePage: "home" | "team" | "meetings" | "news";
+  activePage: "home" | "team" | "meetings" | "news" | "event";
+  /** Browser-tab title. Defaults to the site title. */
+  tabTitle?: string;
 }
 
-const { description, activePage } = Astro.props;
-const pageTitle = site.siteTitle;
+const { description, activePage, tabTitle } = Astro.props;
+const pageTitle = tabTitle ?? site.siteTitle;
 ---
 
 <!doctype html>
@@ -25,6 +27,9 @@ const pageTitle = site.siteTitle;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={description ?? site.tagline} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description ?? site.tagline} />
+    <slot name="head" />
   </head>
   <body>
     <Masthead activePage={activePage} nav={site.nav} />

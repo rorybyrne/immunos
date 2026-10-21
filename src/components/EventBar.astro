@@ -1,0 +1,25 @@
+---
+import event from "../data/assay-a-thon.json";
+
+interface Props {
+  /** Prefix for in-page anchors, so the FAQ page links back to the event page. */
+  base?: string;
+}
+
+const { base = "" } = Astro.props;
+const href = (h: string) => (h.startsWith("#") ? `${base}${h}` : h);
+
+/* Until the form is live, the Apply button points at the key dates. */
+const applyHref = event.applyUrl || `${base}#dates`;
+const applyLabel = event.applyUrl ? "Apply now" : `Apply · opens ${event.applyOpens.replace(" 2026", "")}`;
+---
+
+<div class="aat-bar">
+  <div class="shell aat-bar__inner">
+    <a class="aat-bar__name" href={base || "#top"}>Assay-A-Thon</a>
+    <nav class="aat-bar__nav" aria-label="Assay-A-Thon">
+      {event.nav.map((item) => <a href={href(item.href)}>{item.label}</a>)}
+    </nav>
+    <a class="aat-btn aat-btn--primary aat-bar__apply" href={applyHref}>{applyLabel}</a>
+  </div>
+</div>

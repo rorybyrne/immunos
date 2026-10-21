@@ -1,0 +1,304 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import EventBar from "../../components/EventBar.astro";
+import "../../styles/assay-a-thon.css";
+import event from "../../data/assay-a-thon.json";
+
+const applyHref = event.applyUrl || "#dates";
+const applyLabel = event.applyUrl ? "Apply now" : `Applications open ${event.applyOpens}`;
+const initials = (name: string) =>
+  name.replace(/^Prof\s+/, "").split(/\s+/).map((w) => w[0]).slice(0, 2).join("");
+---
+
+<Layout activePage="event" tabTitle={event.tabTitle} description={event.metaDescription}>
+  <div class="aat" id="top">
+    <EventBar />
+
+    <!-- ===== Hero ===== -->
+    <section class="aat-hero">
+      <div class="shell aat-hero__inner">
+        <div class="aat-logos" aria-label="Hosted by ImmunOS and Pillar VC, powered by ARIA">
+          <span class="aat-logos__immunos">
+            <img src="/brand/immunos-mark.png" alt="" width="44" height="44" />
+            <span>Immun<b>OS</b></span>
+          </span>
+          <span class="aat-logos__sep" aria-hidden="true">×</span>
+          <span class="aat-logos__pillar">Pillar VC</span>
+          <img class="aat-logos__aria" src="/brand/aria-powered-by.png" alt="Powered by ARIA" width="140" height="79" />
+        </div>
+        <p class="aat-hero__present">{event.hero.present}</p>
+        <h1 class="aat-hero__headline">{event.hero.headline}</h1>
+        <p class="aat-hero__date">{event.hero.dates}</p>
+        <p class="aat-hero__sub">{event.hero.sub}</p>
+        <div class="aat-hero__ctas">
+          <a class="aat-btn aat-btn--primary" href={applyHref}>{applyLabel}</a>
+          <a class="aat-btn aat-btn--ghost" href="#agenda">See the agenda</a>
+        </div>
+        <p class="aat-hero__hosts">
+          {event.hero.hosts} <a href="#get-involved">Partner with us →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== The problem ===== -->
+    <section class="section aat-problem">
+      <div class="shell aat-split">
+        <div>
+          <h2 class="aat-h2">{event.problem.heading}</h2>
+          {event.problem.intro.map((p) => <p class="aat-prose">{p}</p>)}
+          <p class="aat-prose aat-about">{event.about.immunos}</p>
+        </div>
+        <ol class="aat-pyramid">
+          {event.problem.steps.map((s, i) => (
+            <li class={`aat-pyramid__step aat-pyramid__step--${i + 1}`}>
+              <span class="aat-pyramid__label">
+                <span class="aat-pyramid__num">{String(i + 1).padStart(2, "0")}</span>
+                {s.label} <span class="aat-pyramid__time">— {s.time}</span>
+              </span>
+              <span class="aat-pyramid__point">{s.point}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Challenges ===== -->
+    <section class="section aat-anchor" id="challenges">
+      <div class="shell">
+        <p class="aat-eyebrow">The challenges</p>
+        <h2 class="aat-h2">Three gaps in the validation toolkit</h2>
+        <p class="aat-prose aat-lede">{event.challenges.intro}</p>
+
+        <div class="aat-challenges">
+          {event.challenges.items.map((c, i) => (
+            <article class="aat-challenge">
+              <span class="aat-challenge__num">Challenge {i + 1}</span>
+              <h3 class="aat-challenge__name">{c.name}</h3>
+              <p class="aat-challenge__focus">{c.focus}</p>
+              <details class="aat-challenge__more">
+                <summary>Read the brief</summary>
+                <p>{c.description}</p>
+              </details>
+              <div class="aat-themes">
+                {c.themes.map((t) => (
+                  <details class="aat-theme">
+                    <summary>{t.title}</summary>
+                    <p>{t.text}</p>
+                  </details>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Who should apply ===== -->
+    <section class="section aat-tint aat-anchor" id="who">
+      <div class="shell">
+        <p class="aat-eyebrow">Who should apply</p>
+        <h2 class="aat-h2">You might be…</h2>
+        <p class="aat-prose aat-lede">{event.who.intro}</p>
+
+        <div class="aat-profiles">
+          {event.who.profiles.map((p) => (
+            <div class="aat-profile">
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <dl class="aat-details">
+          {event.who.details.map((d) => (
+            <div>
+              <dt>{d.label}</dt>
+              <dd>{d.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== Application & key dates ===== -->
+    <section class="section aat-anchor" id="dates">
+      <div class="shell aat-split">
+        <div>
+          <p class="aat-eyebrow">How to apply</p>
+          <h2 class="aat-h2">Invite-only, rolling decisions</h2>
+          <p class="aat-prose">{event.apply.howItWorks}</p>
+          <p class="aat-prose"><strong>We select for:</strong> {event.apply.criteria}</p>
+          <a class="aat-btn aat-btn--primary" href={event.applyUrl || undefined} aria-disabled={event.applyUrl ? undefined : "true"}>
+            {applyLabel}
+          </a>
+        </div>
+        <ol class="aat-timeline">
+          {event.apply.dates.map((d) => (
+            <li>
+              <span class="aat-timeline__date">{d.date}</span>
+              <span class="aat-timeline__what">{d.milestone}</span>
+              {d.note && <span class="aat-timeline__note">{d.note}</span>}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Agenda ===== -->
+    <section class="section aat-tint aat-anchor" id="agenda">
+      <div class="shell">
+        <h2 class="aat-h2">The Agenda</h2>
+        <div class="aat-agenda">
+          {event.agenda.map((day) => (
+            <div class="aat-agenda__day">
+              <h3>{day.day}</h3>
+              <ul>
+                {day.sessions.map((s) => (
+                  <li>
+                    <span class="aat-agenda__time">{s.time}</span>
+                    <span>{s.session}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Judging & prizes ===== -->
+    <section class="section aat-anchor" id="prizes">
+      <div class="shell">
+        <p class="aat-eyebrow">Judging &amp; prizes</p>
+        <div class="aat-prize">
+          <span class="aat-prize__by">Provided by {event.prize.by}</span>
+          <h2 class="aat-prize__name">{event.prize.name}</h2>
+          <p>{event.prize.text}</p>
+        </div>
+        <p class="aat-note">{event.prize.additional}</p>
+
+        <h3 class="aat-h3">What the judges look for</h3>
+        <dl class="aat-criteria">
+          {event.judging.map((j) => (
+            <div>
+              <dt>{j.criterion}</dt>
+              <dd>{j.detail}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== Partners ===== -->
+    <section class="section aat-tint aat-anchor" id="partners">
+      <div class="shell">
+        <h2 class="aat-h2">{event.partners.heading}</h2>
+        <p class="aat-host">
+          Hosted by{" "}
+          <a class="aat-wordmark aat-wordmark--lg" href={event.partners.host.href} target="_blank" rel="noreferrer">
+            {event.partners.host.name}
+          </a>
+        </p>
+        <ul class="aat-wall">
+          {event.partners.wall.map((p) => (
+            <li>
+              {p.href ? (
+                <a class="aat-wordmark" href={p.href} target="_blank" rel="noreferrer">{p.name}</a>
+              ) : (
+                <span class="aat-wordmark">{p.name}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Judges & mentors ===== -->
+    <section class="section aat-anchor" id="judges">
+      <div class="shell">
+        <h2 class="aat-h2">Judges</h2>
+        <p class="aat-prose aat-lede">{event.judges.intro}</p>
+        <div class="aat-people">
+          {event.judges.people.map((p) => {
+            const Tag = p.href ? "a" : "div";
+            return (
+              <Tag class="aat-person" {...(p.href ? { href: p.href, target: "_blank", rel: "noreferrer" } : {})}>
+                <div class="aat-person__photo">
+                  {p.photo ? <img src={p.photo} alt={`Portrait of ${p.name}`} loading="lazy" /> : <span>{initials(p.name)}</span>}
+                </div>
+                <h3>{p.name}</h3>
+                <p>{p.title}<br />{p.org}</p>
+              </Tag>
+            );
+          })}
+        </div>
+
+        <h2 class="aat-h2 aat-h2--spaced" id="mentors">Mentors</h2>
+        <p class="aat-prose aat-lede">{event.mentors.intro}</p>
+        <div class="aat-people">
+          <div class="aat-person aat-person--soon">
+            <div class="aat-person__photo"><span>+</span></div>
+            <h3>{event.mentors.more}</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Organising team ===== -->
+    <section class="section aat-tint aat-anchor" id="team">
+      <div class="shell">
+        <h2 class="aat-h2">Organising team</h2>
+        <div class="aat-people">
+          {event.team.map((p) => (
+            <a class="aat-person" href={p.href} target="_blank" rel="noreferrer">
+              <div class="aat-person__photo"><img src={p.photo} alt={`Portrait of ${p.name}`} loading="lazy" /></div>
+              <h3>{p.name}</h3>
+              <p><em>{p.role}</em><br />{p.title}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Get involved ===== -->
+    <section class="aat-involved aat-anchor" id="get-involved">
+      <div class="shell aat-involved__inner">
+        <div>
+          <h2 class="aat-h2">{event.involved.heading}</h2>
+          <p class="aat-prose">{event.involved.text}</p>
+        </div>
+        <a class="aat-btn aat-btn--primary" href={event.partnerMailto}>Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ===== Powered by ARIA ===== -->
+    <section class="aat-aria">
+      <div class="shell aat-aria__inner">
+        <div>
+          <h2 class="aat-h2">{event.aria.heading}</h2>
+          <p class="aat-prose">
+            {event.aria.text}{" "}
+            Read more about ARIA’s{" "}
+            <a href={event.aria.programmeHref} target="_blank" rel="noreferrer">{event.aria.programmeLabel}</a>.
+          </p>
+        </div>
+        <a class="aat-aria__badge" href="https://aria.org.uk" target="_blank" rel="noreferrer">
+          <img src="/brand/aria-powered-by.png" alt="Powered by ARIA" width="220" height="124" />
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== Event footer ===== -->
+    <section class="aat-foot">
+      <div class="shell aat-foot__inner">
+        <p class="aat-foot__line">{event.footer.line}</p>
+        <p>
+          <a href="/assay-a-thon/faq/">FAQs</a> ·{" "}
+          <a href={`mailto:${event.email}`}>{event.email}</a> ·{" "}
+          <a href={event.footer.dispatch} target="_blank" rel="noreferrer">Subscribe to The ImmunOS Dispatch for the event recap</a>
+        </p>
+        <p class="aat-foot__small">{event.footer.consent}</p>
+      </div>
+    </section>
+  </div>
+</Layout>

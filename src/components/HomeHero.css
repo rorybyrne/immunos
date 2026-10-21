@@ -90,6 +90,34 @@
   text-underline-offset: 0.18em;
 }
 
+/* "Meet the team" — quiet outlined pill in wordmark navy. */
+.home-hero__team {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--space-8);
+  padding: 11px 22px;
+  border: 1px solid var(--ink-700);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-700);
+  text-decoration: none;
+  transition:
+    background var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+
+.home-hero__team span { transition: transform var(--dur-base) var(--ease-out); }
+
+.home-hero__team:hover {
+  background: var(--ink-700);
+  color: var(--paper);
+}
+
+.home-hero__team:hover span { transform: translateX(3px); }
+
 .home-hero__visual {
   display: flex;
   justify-content: center;

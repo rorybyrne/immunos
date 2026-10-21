@@ -3,6 +3,7 @@
    ========================================================================= */
 
 .team-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,22 +14,28 @@
 
 /* ---- Portrait: an organic "cell" with a warm membrane, as on the home page */
 
-.team-card__portrait {
+/* Square, unclipped holder: carries the dotted connector to the next cell. */
+.team-card__cell {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   margin-bottom: var(--space-4);
+}
+
+.team-card__portrait {
+  position: relative;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   border-radius: 47% 53% 57% 43% / 50% 45% 55% 50%;
-  border: 2.5px solid var(--warm-400);
+  border: 2.5px solid #C4C4C4;   /* neutral grey membrane */
   background: var(--paper-deep);
-  /* Black & white for photo and membrane alike, matching the home page. */
+  /* Black & white for photo and membrane alike — and it stays that way on hover. */
   filter: grayscale(100%);
   transition:
     transform var(--dur-base) var(--ease-out),
     border-radius var(--dur-slow) var(--ease-in-out),
-    box-shadow var(--dur-base) var(--ease-out),
-    filter var(--dur-base) var(--ease-out);
+    box-shadow var(--dur-base) var(--ease-out);
 }
 
 .team-card:nth-child(4n + 1) .team-card__portrait { border-radius: 47% 53% 57% 43% / 50% 45% 55% 50%; }
@@ -45,7 +52,10 @@ a.team-card:hover .team-card__portrait {
   box-shadow: var(--shadow-lg);
 }
 
+/* Pinned to the frame so a tall photo can't stretch the cell. */
 .team-card__portrait-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;

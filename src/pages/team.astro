@@ -40,15 +40,59 @@ team.sort((a, b) => a.data.order - b.data.order);
 
 <style>
   .team-grid {
+    --col-gap: var(--space-12);
+    --row-gap: var(--space-16);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-16) var(--space-12);
+    gap: var(--row-gap) var(--col-gap);
     max-width: 900px;
     margin-inline: auto;
   }
 
   @media (max-width: 720px) {
-    .team-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-12) var(--space-6); }
+    .team-grid {
+      --col-gap: var(--space-6);
+      --row-gap: var(--space-12);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ---- Dotted orange signalling pathway between the cells ---------- */
+
+  /* Across each row, from one portrait to the next. */
+  .team-grid :global(.team-card__cell::after) {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: var(--col-gap);
+    border-top: 2px dotted var(--warm-700);
+    transform: translateY(-50%);
+  }
+
+  /* None off the end of a row, or off the last cell. */
+  .team-grid :global(.team-card:nth-child(3n) .team-card__cell::after),
+  .team-grid :global(.team-card:last-child .team-card__cell::after) { display: none; }
+
+  /* Down the grid, snaking: the end of one row drops to the row below. */
+  .team-grid :global(.team-card:nth-child(3)::before),
+  .team-grid :global(.team-card:nth-child(4)::before),
+  .team-grid :global(.team-card:nth-child(9)::before),
+  .team-grid :global(.team-card:nth-child(10)::before) {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    height: var(--row-gap);
+    border-left: 2px dotted var(--warm-700);
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 720px) {
+    .team-grid :global(.team-card:nth-child(3n) .team-card__cell::after) { display: block; }
+    .team-grid :global(.team-card:nth-child(2n) .team-card__cell::after),
+    .team-grid :global(.team-card:last-child .team-card__cell::after) { display: none; }
+    .team-grid :global(.team-card::before) { display: none; }
   }
 
   /* Team-page header fills the shell so each line stays on one line. */

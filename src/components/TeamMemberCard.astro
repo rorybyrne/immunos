@@ -24,6 +24,7 @@ const linkAttrs = website
 ---
 
 <Tag class="team-card" {...linkAttrs}>
+  <div class="team-card__cell">
   <div class:list={["team-card__portrait", { [portraitVariant]: !portrait }]}>
     {portrait ? (
       <img class="team-card__portrait-img" src={portrait} alt={`Portrait of ${name}`} loading="lazy" />
@@ -33,6 +34,7 @@ const linkAttrs = website
         <span class="team-card__portrait-label">Portrait {portraitNumber}</span>
       </>
     )}
+  </div>
   </div>
   <div class="team-card__body">
     <h3 class="team-card__name">{name}</h3>

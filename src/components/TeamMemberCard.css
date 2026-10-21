@@ -22,10 +22,13 @@
   border-radius: 47% 53% 57% 43% / 50% 45% 55% 50%;
   border: 2.5px solid var(--warm-400);
   background: var(--paper-deep);
+  /* Black & white for photo and membrane alike, matching the home page. */
+  filter: grayscale(100%);
   transition:
     transform var(--dur-base) var(--ease-out),
     border-radius var(--dur-slow) var(--ease-in-out),
-    box-shadow var(--dur-base) var(--ease-out);
+    box-shadow var(--dur-base) var(--ease-out),
+    filter var(--dur-base) var(--ease-out);
 }
 
 .team-card:nth-child(4n + 1) .team-card__portrait { border-radius: 47% 53% 57% 43% / 50% 45% 55% 50%; border-color: var(--warm-300); }
@@ -37,6 +40,7 @@
 a.team-card:hover { color: inherit; }
 a.team-card:hover .team-card__portrait {
   border-radius: 50%;
+  filter: grayscale(35%);
   transform: scale(1.04);
   box-shadow: var(--shadow-lg);
 }
@@ -46,11 +50,7 @@ a.team-card:hover .team-card__portrait {
   height: 100%;
   object-fit: cover;
   display: block;
-  /* Uniform black & white across the team grid. */
-  filter: grayscale(100%);
-  transition: filter var(--dur-base) var(--ease-out);
 }
-a.team-card:hover .team-card__portrait-img { filter: grayscale(35%); }
 
 .team-card__portrait--v1 { background: linear-gradient(160deg, #FFEFCC 0%, #FFD15C 70%, #FFB37A 100%); }
 .team-card__portrait--v2 { background: linear-gradient(160deg, #FFE0A0 0%, #FF8B80 70%, #FF6A5D 100%); }

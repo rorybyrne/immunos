@@ -581,9 +581,17 @@ body:has(.aat) .masthead { position: relative; }
 }
 
 /* ---- Partners ----------------------------------------------------- */
-/* Text wordmarks stand in until approved logo files arrive. */
 
-.aat-host { margin: 0 0 var(--space-8); font-size: 15px; color: var(--fg-3); }
+.aat-host {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-8);
+  font-size: 15px;
+  color: var(--fg-3);
+}
+.aat-host__logo { display: block; }
+.aat-host__logo img { height: 44px; width: auto; }
 
 .aat-wordmark {
   font-family: var(--aat-display);
@@ -601,19 +609,46 @@ a.aat-wordmark:hover { color: var(--aat-green-deep); }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: var(--space-4);
 }
-.aat-wall li {
+.aat-wall li { display: flex; }
+
+.aat-logo {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 96px;
+  gap: 10px;
+  min-height: 104px;
   padding: var(--space-4);
-  background: var(--paper-card);
+  background: #fff;
   border: 1px solid var(--rule);
   border-radius: var(--radius-md);
-  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+a.aat-logo:hover {
+  border-color: var(--rule-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Logos sit in a common box so wide and square marks read at similar weight. */
+.aat-logo img { max-width: 100%; max-height: 40px; width: auto; height: auto; }
+.aat-logo img.aat-logo__mark { max-height: 36px; flex-shrink: 0; }
+/* Optical balancing: these files carry extra whitespace / a long wordmark. */
+.aat-logo img[src*="full-circle"] { max-height: 64px; }
+.aat-logo img[src*="litmus"] { max-height: 34px; }
+.aat-logo__label {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #032965;
 }
 
 /* ---- People grids (judges, mentors, team) ----------------------- */

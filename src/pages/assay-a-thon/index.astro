@@ -194,25 +194,27 @@ const initials = (name: string) =>
         <h2 class="aat-h2">{event.partners.heading}</h2>
         <p class="aat-host">
           Hosted by{" "}
-          <a class="aat-wordmark aat-wordmark--lg" href={event.partners.host.href} target="_blank" rel="noreferrer">
-            {event.partners.host.name}
+          <a class="aat-host__logo" href={event.partners.host.href} target="_blank" rel="noreferrer">
+            <img src={event.partners.host.logo} alt={event.partners.host.name} />
           </a>
         </p>
         <ul class="aat-wall">
-          {event.partners.wall.map((p) => (
-            <li>
-              {p.href ? (
-                <a class="aat-wordmark" href={p.href} target="_blank" rel="noreferrer">{p.name}</a>
-              ) : (
-                <span class="aat-wordmark">{p.name}</span>
-              )}
-            </li>
-          ))}
+          {event.partners.wall.map((p) => {
+            const Tag = p.href ? "a" : "div";
+            return (
+              <li>
+                <Tag class="aat-logo" {...(p.href ? { href: p.href, target: "_blank", rel: "noreferrer" } : {})}>
+                  <img src={p.logo} alt={p.label ? "" : p.name} class:list={[{ "aat-logo__mark": p.label }]} />
+                  {p.label && <span class="aat-logo__label">{p.label}</span>}
+                </Tag>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
 
-    <!-- ===== Judges & mentors ===== -->
+    <!-- ===== Judges ===== -->
     <section class="section aat-anchor" id="judges">
       <div class="shell">
         <h2 class="aat-h2">Judges</h2>
@@ -230,15 +232,6 @@ const initials = (name: string) =>
               </Tag>
             );
           })}
-        </div>
-
-        <h2 class="aat-h2 aat-h2--spaced" id="mentors">Mentors</h2>
-        <p class="aat-prose aat-lede">{event.mentors.intro}</p>
-        <div class="aat-people">
-          <div class="aat-person aat-person--soon">
-            <div class="aat-person__photo"><span>+</span></div>
-            <h3>{event.mentors.more}</h3>
-          </div>
         </div>
       </div>
     </section>

@@ -19,7 +19,7 @@
       "href": "#partners"
     },
     {
-      "label": "Judges & Mentors",
+      "label": "Judges",
       "href": "#judges"
     },
     {
@@ -332,28 +332,35 @@
     "heading": "Meet Our Partners",
     "host": {
       "name": "Pillar VC",
-      "href": "https://pillar.vc"
+      "href": "https://pillar.vc",
+      "logo": "/partners/pillar-vc.svg"
     },
     "wall": [
       {
         "name": "ARIA",
-        "href": "https://aria.org.uk"
+        "href": "https://aria.org.uk",
+        "logo": "/partners/aria.svg"
       },
       {
         "name": "Litmus Science",
-        "href": "https://litmus.science"
+        "href": "https://litmus.science",
+        "logo": "/partners/litmus-science.svg"
       },
       {
         "name": "Lightcast Discovery",
-        "href": "https://www.lightcast.bio/"
+        "href": "https://www.lightcast.bio/",
+        "logo": "/partners/lightcast.svg"
       },
       {
         "name": "Full Circle Labs",
-        "href": "https://fullcirclelabs.bio"
+        "href": "https://fullcirclelabs.bio",
+        "logo": "/partners/full-circle-labs.svg"
       },
       {
         "name": "Flowmatter",
-        "href": ""
+        "href": "",
+        "logo": "/partners/flowmatter.svg",
+        "label": "Flowmatter"
       }
     ]
   },
@@ -389,11 +396,6 @@
         "photo": "/judges/michael-crone.jpg"
       }
     ]
-  },
-  "mentors": {
-    "intro": "Mentors span wet-lab, engineering and computational expertise, and are shared across all three challenges.",
-    "people": [],
-    "more": "Mentors announcing soon"
   },
   "team": [
     {

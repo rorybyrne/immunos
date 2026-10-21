@@ -1,38 +1,42 @@
 /* =========================================================================
-   TeamMemberCard — full-bio team card with warm portrait gradient or photo.
+   TeamMemberCard — round portrait "cell" with name, role, interest and affiliation.
    ========================================================================= */
 
 .team-card {
   display: flex;
   flex-direction: column;
-  background: var(--paper-card);
-  border: 1px solid var(--rule);
-  overflow: hidden;
-  box-shadow: var(--shadow-xs);
+  align-items: center;
+  text-align: center;
   text-decoration: none;
   color: inherit;
-  transition:
-    border-color var(--dur-base) var(--ease-out),
-    box-shadow var(--dur-base) var(--ease-out),
-    transform var(--dur-base) var(--ease-out);
 }
 
-/* The whole card links to the member's site; lift it on hover. */
-a.team-card:hover {
-  border-color: var(--rule-strong);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-  color: inherit;
-}
-
-/* ---- Portrait --------------------------------------------------- */
+/* ---- Portrait: a round "cell" with a warm membrane, as on the home page */
 
 .team-card__portrait {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-bottom: 1px solid var(--rule);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: var(--space-4);
   overflow: hidden;
+  border-radius: 50%;
+  border: 2.5px solid var(--warm-400);
   background: var(--paper-deep);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.team-card:nth-child(4n + 1) .team-card__portrait { border-color: var(--warm-300); }
+.team-card:nth-child(4n + 2) .team-card__portrait { border-color: var(--warm-500); }
+.team-card:nth-child(4n + 3) .team-card__portrait { border-color: var(--warm-400); }
+.team-card:nth-child(4n + 4) .team-card__portrait { border-color: var(--warm-600); }
+
+/* The whole card links to the member's site; the portrait lifts on hover. */
+a.team-card:hover { color: inherit; }
+a.team-card:hover .team-card__portrait {
+  transform: scale(1.04);
+  box-shadow: var(--shadow-lg);
 }
 
 .team-card__portrait-img {
@@ -40,10 +44,11 @@ a.team-card:hover {
   height: 100%;
   object-fit: cover;
   display: block;
-  /* Uniform black & white across the team grid. Non-destructive — the
-     already-monochrome portraits (Thomas, Inga) are unaffected. */
+  /* Uniform black & white across the team grid. */
   filter: grayscale(100%);
+  transition: filter var(--dur-base) var(--ease-out);
 }
+a.team-card:hover .team-card__portrait-img { filter: grayscale(35%); }
 
 .team-card__portrait--v1 { background: linear-gradient(160deg, #FFEFCC 0%, #FFD15C 70%, #FFB37A 100%); }
 .team-card__portrait--v2 { background: linear-gradient(160deg, #FFE0A0 0%, #FF8B80 70%, #FF6A5D 100%); }
@@ -74,13 +79,15 @@ a.team-card:hover {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 22px;
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--space-2);
 }
 
 .team-card__name {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 19px;
   line-height: 1.2;
   letter-spacing: -0.005em;
   font-weight: 500;
@@ -95,8 +102,8 @@ a.team-card:hover {
   line-height: 1.4;
   font-style: italic;
   color: var(--warm-700);
-  /* Reserve 3 lines so every interest paragraph starts at the same height. */
-  min-height: calc(1.4em * 3);
+  /* Reserve 2 lines so every interest paragraph starts at the same height. */
+  min-height: calc(1.4em * 2);
 }
 
 .team-card__interest {
@@ -120,6 +127,7 @@ a.team-card:hover {
 /* Pushed to the bottom, with 2 lines reserved, so the divider line lands at
    the same height across every card. */
 .team-card__affiliation {
+  align-self: stretch;
   margin-top: auto;
   padding-top: 12px;
   border-top: 1px solid var(--rule);
@@ -127,7 +135,7 @@ a.team-card:hover {
   font-size: 13px;
   line-height: 1.5;
   color: var(--fg-3);
-  min-height: calc(13px + 3em);
+  min-height: calc(13px + 1.5em);
 }
 
 /* (Website link removed — the whole card is the link now.) */

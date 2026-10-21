@@ -41,20 +41,14 @@ team.sort((a, b) => a.data.order - b.data.order);
 <style>
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6) var(--space-5);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-16) var(--space-12);
+    max-width: 900px;
+    margin-inline: auto;
   }
 
-  @media (min-width: 720px) {
-    .team-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  @media (min-width: 980px) {
-    .team-grid { grid-template-columns: repeat(4, 1fr); }
-  }
-
-  @media (max-width: 459px) {
-    .team-grid { grid-template-columns: 1fr; }
+  @media (max-width: 720px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-12) var(--space-6); }
   }
 
   /* Team-page header fills the shell so each line stays on one line. */

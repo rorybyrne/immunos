@@ -5,6 +5,6 @@ affiliation: Pillar VC | The Francis Crick Institute
 interest: "Excited about designing biomolecular tools to understand immunological function and orchestration."
 portrait: /team/anjali.png
 website: https://www.linkedin.com/in/anjali-chadha-mit/
-order: 3
+order: 4
 featured: true
 ---

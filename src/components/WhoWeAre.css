@@ -1,5 +1,5 @@
 /* =========================================================================
-   WhoWeAre — the full team as abstract "cells", three rows of four, linked
+   WhoWeAre — the full team as abstract "cells", three per row, linked
    along a dotted orange signalling pathway. B&W portraits sit inside warm
    organic cell membranes; the cell links to that member's site.
    ========================================================================= */
@@ -13,20 +13,19 @@
   max-width: none;
 }
 
-/* ---- Grid (3 × 4 = 12, everyone visible) ------------------------- */
+/* ---- Grid (three per row, everyone visible) ---------------------- */
 
 .affiliate-grid {
+  --cell-gap: var(--space-12);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-10) var(--space-8);
-}
-
-@media (max-width: 960px) {
-  .affiliate-grid { grid-template-columns: repeat(3, 1fr); }
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-10) var(--cell-gap);
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 @media (max-width: 560px) {
-  .affiliate-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-8) var(--space-6); }
+  .affiliate-grid { --cell-gap: var(--space-6); grid-template-columns: repeat(2, 1fr); gap: var(--space-8) var(--cell-gap); }
 }
 
 /* ---- Member cell (link) ------------------------------------------ */
@@ -89,31 +88,29 @@
   position: absolute;
   top: 50%;
   left: 100%;
-  width: var(--space-8);
+  width: var(--cell-gap);
   height: 0;
   border-top: 2px dotted var(--warm-700);
   transform: translateY(-50%);
 }
 
-/* No connector off the right-most cell of each row (4-up desktop). */
-.affiliate-cell:nth-child(4n) .affiliate-cell__portrait::after { display: none; }
-
-@media (max-width: 960px) {
-  .affiliate-cell:nth-child(4n) .affiliate-cell__portrait::after { display: block; }
-  .affiliate-cell:nth-child(3n) .affiliate-cell__portrait::after { display: none; }
-}
+/* No connector off the right-most cell of each row (3-up), or off the last cell. */
+.affiliate-cell:nth-child(3n) .affiliate-cell__portrait::after { display: none; }
+.affiliate-cell:last-child .affiliate-cell__portrait::after { display: none !important; }
 
 @media (max-width: 560px) {
   .affiliate-cell:nth-child(3n) .affiliate-cell__portrait::after { display: block; }
   .affiliate-cell:nth-child(2n) .affiliate-cell__portrait::after { display: none; }
 }
 
-/* ---- Vertical links down the pathway (desktop 4-up only) ---------
-   Jose (row 1, col 4) ↓ Rory (row 2, col 4); Sara (row 2, col 1) ↓ David
-   (row 3, col 1). Bridges the row gap in the matching column. */
-@media (min-width: 961px) {
+/* ---- Vertical links down the pathway (3-up only) -----------------
+   The pathway snakes down the grid, alternating sides: the end of one row
+   drops to the row below. Bridges the row gap in the matching column. */
+@media (min-width: 561px) {
+  .affiliate-cell:nth-child(3)::before,
   .affiliate-cell:nth-child(4)::before,
-  .affiliate-cell:nth-child(5)::before {
+  .affiliate-cell:nth-child(9)::before,
+  .affiliate-cell:nth-child(10)::before {
     content: "";
     position: absolute;
     top: 100%;
@@ -130,7 +127,7 @@
 .affiliate-cell__name {
   margin-top: 2px;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.25;
   font-weight: 500;
   font-variation-settings: "opsz" 24;
@@ -140,7 +137,7 @@
 .affiliate-cell__role {
   margin-top: 1px;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 13px;
   font-style: italic;
   line-height: 1.35;
   color: var(--warm-700);

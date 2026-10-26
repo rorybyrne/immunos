@@ -4,7 +4,15 @@ import "./MeetingEntry.css";
 interface Link {
   title: string;
   meta: string;
-  href: string;
+  href?: string;
+}
+
+interface Person {
+  name: string;
+  role: string;
+  bio?: string;
+  photo?: string;
+  href?: string;
 }
 
 interface PollResult {
@@ -18,57 +26,70 @@ interface Props {
     title: string;
     date: string;
     venue: string;
-    attendance?: number;
+    summary?: string;
+    lumalink?: string;
     open?: boolean;
-    image?: { src?: string; caption?: string };
-    speaker?: { name: string; role: string; bio: string };
+    speakers: Person[];
     writing: Link[];
     fieldNews: Link[];
     industryNews: Link[];
     questions: string[];
     poll?: { q: string; results: PollResult[] };
     tools: Link[];
+    reading: Link[];
   };
   isLast?: boolean;
+  /** Editions that have Luma artwork in /public/luma. */
+  hasThumb?: boolean;
 }
 
-const { meeting, isLast } = Astro.props;
+const { meeting, isLast, hasThumb } = Astro.props;
 const pollTotal = meeting.poll?.results.reduce((s, r) => s + r.n, 0) ?? 0;
+const initials = (name: string) =>
+  name.replace(/^(Dr|Prof)\.?\s+/, "").split(/\s+/).map((w) => w[0]).slice(0, 2).join("");
+const speakerNames = meeting.speakers.map((s) => s.name).join(", ");
+
+const linkSections = [
+  { label: "Our writing", items: meeting.writing },
+  { label: "Field news", items: meeting.fieldNews },
+  { label: "Industry news", items: meeting.industryNews },
+  { label: "Tools & artefacts", items: meeting.tools },
+  { label: "Reading", items: meeting.reading, wide: true },
+].filter((s) => s.items.length > 0);
 ---
 
 <article class:list={["meeting-entry", { "meeting-entry--last": isLast }]}>
   <details class="meeting-entry__details" open={meeting.open}>
     <summary class="meeting-entry__summary">
       <div class="meeting-entry__head">
-        <span class="meeting-entry__no">{meeting.no}</span>
+        {hasThumb ? (
+          <img
+            class="meeting-entry__thumb"
+            src={`/luma/ImmunOS-luma${meeting.no}.png`}
+            alt=""
+            width="80"
+            height="80"
+            loading="lazy"
+          />
+        ) : (
+          <div class="meeting-entry__thumb meeting-entry__thumb--mark" aria-hidden="true">
+            <img src="/brand/immunos-mark.png" alt="" width="40" height="40" />
+          </div>
+        )}
         <div class="meeting-entry__head-text">
           <h2 class="meeting-entry__title">{meeting.title}</h2>
           <div class="meeting-entry__head-meta">
             <span>{meeting.date}</span>
             <span class="meeting-entry__sep" aria-hidden="true">·</span>
             <span>{meeting.venue}</span>
-            {meeting.attendance !== undefined && (
+            {speakerNames && (
               <>
                 <span class="meeting-entry__sep" aria-hidden="true">·</span>
-                <span>{meeting.attendance} attendees</span>
-              </>
-            )}
-            {meeting.speaker && (
-              <>
-                <span class="meeting-entry__sep" aria-hidden="true">·</span>
-                <span>with {meeting.speaker.name}</span>
+                <span>with {speakerNames}</span>
               </>
             )}
           </div>
         </div>
-        <img
-          class="meeting-entry__thumb"
-          src={`/luma/ImmunOS-luma${meeting.no}.png`}
-          alt=""
-          width="80"
-          height="80"
-          loading="lazy"
-        />
         <span class="meeting-entry__toggle">
           <span class="meeting-entry__toggle-open">Read +</span>
           <span class="meeting-entry__toggle-close">Close —</span>
@@ -77,84 +98,67 @@ const pollTotal = meeting.poll?.results.reduce((s, r) => s + r.n, 0) ?? 0;
     </summary>
 
     <div class="meeting-entry__body">
+      {meeting.summary && <p class="meeting-entry__lede">{meeting.summary}</p>}
+
       {
-        meeting.image && (
-          <figure class="meeting-entry__figure">
-            {meeting.image.src ? (
-              <img
-                class="meeting-entry__figure-img"
-                src={meeting.image.src}
-                alt=""
-                loading="lazy"
-              />
-            ) : (
-              <div class="meeting-entry__figure-placeholder" aria-hidden="true" />
-            )}
-            {meeting.image.caption && (
-              <figcaption class="meeting-entry__figcaption">{meeting.image.caption}</figcaption>
-            )}
-          </figure>
+        meeting.speakers.length > 0 && (
+          <section class="meeting-entry__speakers">
+            <div class="meeting-entry__label">{meeting.speakers.length > 1 ? "Speakers" : "Speaker"}</div>
+            <div class="meeting-entry__speaker-list">
+              {meeting.speakers.map((p) => (
+                <div class="meeting-entry__speaker-card">
+                  <div class="meeting-entry__speaker-photo">
+                    {p.photo ? (
+                      <img src={p.photo} alt={`Portrait of ${p.name}`} loading="lazy" />
+                    ) : (
+                      <span aria-hidden="true">{initials(p.name)}</span>
+                    )}
+                  </div>
+                  <div class="meeting-entry__speaker-text">
+                    <h3 class="meeting-entry__speaker-name">
+                      {p.href ? (
+                        <a href={p.href} target="_blank" rel="noreferrer">{p.name}</a>
+                      ) : p.name}
+                    </h3>
+                    <div class="meeting-entry__speaker-role">{p.role}</div>
+                    {p.bio && <p class="meeting-entry__speaker-bio">{p.bio}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
         )
       }
 
       <div class="meeting-entry__grid">
-        {meeting.speaker && (
-          <section class="meeting-entry__section">
-            <div class="meeting-entry__label">Speaker</div>
-            <h3 class="meeting-entry__speaker-name">{meeting.speaker.name}</h3>
-            <div class="meeting-entry__speaker-role">{meeting.speaker.role}</div>
-            <p class="meeting-entry__speaker-bio">{meeting.speaker.bio}</p>
-          </section>
-        )}
+        {
+          meeting.questions.length > 0 && (
+            <section class="meeting-entry__section meeting-entry__section--wide">
+              <div class="meeting-entry__label">Provocations</div>
+              <ol class="meeting-entry__provocations">
+                {meeting.questions.map((q) => <li>{q}</li>)}
+              </ol>
+            </section>
+          )
+        }
 
-        {meeting.writing.length > 0 && (
-          <section class="meeting-entry__section">
-            <div class="meeting-entry__label">Our writing</div>
-            <ul class="meeting-entry__links">
-              {meeting.writing.map((w) => (
+        {linkSections.map((s) => (
+          <section class:list={["meeting-entry__section", { "meeting-entry__section--wide": s.wide }]}>
+            <div class="meeting-entry__label">{s.label}</div>
+            <ul class:list={["meeting-entry__links", { "meeting-entry__links--cols": s.wide }]}>
+              {s.items.map((w) => (
                 <li>
-                  <a class="meeting-entry__link" href={w.href}>{w.title}</a>
+                  {w.href ? (
+                    <a class="meeting-entry__link" href={w.href} target="_blank" rel="noreferrer">{w.title}</a>
+                  ) : (
+                    <span class="meeting-entry__link meeting-entry__link--plain">{w.title}</span>
+                  )}
                   <span class="meeting-entry__link-meta">{w.meta}</span>
                 </li>
               ))}
             </ul>
           </section>
-        )}
-
-        <section class="meeting-entry__section">
-          <div class="meeting-entry__label">Field news</div>
-          <ul class="meeting-entry__links">
-            {meeting.fieldNews.map((w) => (
-              <li>
-                <a class="meeting-entry__link" href={w.href}>{w.title}</a>
-                <span class="meeting-entry__link-meta">{w.meta}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {
-          meeting.industryNews.length > 0 && (
-            <section class="meeting-entry__section">
-              <div class="meeting-entry__label">Industry news</div>
-              <ul class="meeting-entry__links">
-                {meeting.industryNews.map((w) => (
-                  <li>
-                    <a class="meeting-entry__link" href={w.href}>{w.title}</a>
-                    <span class="meeting-entry__link-meta">{w.meta}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )
-        }
-
-        <section class="meeting-entry__section">
-          <div class="meeting-entry__label">Provocations</div>
-          <ol class="meeting-entry__provocations">
-            {meeting.questions.map((q) => <li>{q}</li>)}
-          </ol>
-        </section>
+        ))}
 
         {
           meeting.poll && (
@@ -179,23 +183,11 @@ const pollTotal = meeting.poll?.results.reduce((s, r) => s + r.n, 0) ?? 0;
             </section>
           )
         }
-
-        {
-          meeting.tools.length > 0 && (
-            <section class="meeting-entry__section">
-              <div class="meeting-entry__label">Tools &amp; artefacts</div>
-              <ul class="meeting-entry__links">
-                {meeting.tools.map((w) => (
-                  <li>
-                    <a class="meeting-entry__link" href={w.href}>{w.title}</a>
-                    <span class="meeting-entry__link-meta">{w.meta}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )
-        }
       </div>
+
+      {meeting.lumalink && (
+        <a class="meeting-entry__luma" href={meeting.lumalink} target="_blank" rel="noreferrer">Event page on Luma →</a>
+      )}
     </div>
   </details>
 </article>

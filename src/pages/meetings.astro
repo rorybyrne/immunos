@@ -4,21 +4,25 @@ import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import MeetingEntry from "../components/MeetingEntry.astro";
 import site from "../data/site.json";
+import { existsSync } from "node:fs";
 
 const meetings = (await getCollection("meetings"))
   .filter((m) => m.data.status === "past")
   .sort((a, b) => Number(b.data.no) - Number(a.data.no));
+
+/* Luma artwork lives in /public/luma; editions without it get the ImmunOS mark. */
+const hasThumb = (no: string) => existsSync(`public/luma/ImmunOS-luma${no}.png`);
 ---
 
 <Layout activePage="meetings" title={site.meetings.headline}>
   <section class="section-hero meetings-page">
     <div class="shell">
-      <PageHeader headline={site.meetings.headline} />
+      <PageHeader headline={site.meetings.headline} lede={site.meetings.lede} />
 
       <div class="meetings-page__list">
         {
           meetings.map((entry, i) => (
-            <MeetingEntry meeting={entry.data} isLast={i === meetings.length - 1} />
+            <MeetingEntry meeting={entry.data} isLast={i === meetings.length - 1} hasThumb={hasThumb(entry.data.no)} />
           ))
         }
       </div>

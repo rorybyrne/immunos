@@ -20,7 +20,15 @@ const team = defineCollection({
 const linkItem = z.object({
   title: z.string(),
   meta: z.string(),
-  href: z.string(),
+  href: z.string().optional(),
+});
+
+const person = z.object({
+  name: z.string(),
+  role: z.string(),
+  bio: z.string().optional(),
+  photo: z.string().optional(),
+  href: z.string().url().optional(),
 });
 
 const meetings = defineCollection({
@@ -33,7 +41,8 @@ const meetings = defineCollection({
     status: z.enum(["upcoming", "past"]).default("past"),
     description: z.string().optional(),
     format: z.string().optional(),
-    attendance: z.number().optional(),
+    summary: z.string().optional(),
+    lumalink: z.string().url().optional(),
     open: z.boolean().default(false),
     image: z
       .object({
@@ -41,13 +50,7 @@ const meetings = defineCollection({
         caption: z.string().optional(),
       })
       .optional(),
-    speaker: z
-      .object({
-        name: z.string(),
-        role: z.string(),
-        bio: z.string(),
-      })
-      .optional(),
+    speakers: z.array(person).default([]),
     writing: z.array(linkItem).default([]),
     fieldNews: z.array(linkItem).default([]),
     industryNews: z.array(linkItem).default([]),
@@ -59,6 +62,7 @@ const meetings = defineCollection({
       })
       .optional(),
     tools: z.array(linkItem).default([]),
+    reading: z.array(linkItem).default([]),
   }),
 });
 

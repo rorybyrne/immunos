@@ -1,18 +1,16 @@
 ---
 no: "003"
-title: Immunocompetent Organoids
+title: "Installing Hardware: Immunocompetent Organoids"
 date: Saturday 25 April 2026
-venue: Central London
+venue: London
 lumalink: https://luma.com/jknq849t
-attendance: 14
 open: false
-#image:
- # src: /meetings/meeting-003.png
-  #caption: The long room at Mill Hill, ahead of the October session.
-speaker:
-  name: Dr. Abdullah Khan
-  role: University of Oxford · MRC WIMM Group Leader
-  bio: Presented about his recent work on bone marrow organoids (comBO) -- modelling haematopoiesis, immunosenescence and blood cancers in vitro.
+speakers:
+  - name: Dr. Abdullah Khan
+    role: University of Oxford · MRC WIMM Group Leader
+    href: https://www.imm.ox.ac.uk/people/abdullah-khan
+    photo: /meetings/speakers/abdullah-khan.jpg
+    bio: Presented about his recent work on bone marrow organoids (comBO) — modelling haematopoiesis, immunosenescence and blood cancers in vitro.
 fieldNews:
   - title: Human Bone Marrow Organoids for Disease Modeling, Discovery, and Validation of Therapeutic Targets in Hematologic Malignancies
     meta: Cancer Discov · 09 Nov 2022

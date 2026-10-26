@@ -95,3 +95,12 @@
   .next-card__meta dd { margin-bottom: var(--space-2); }
   .next-card__meta dd:last-child { margin-bottom: 0; }
 }
+
+/* Placeholder until the edition's Luma artwork exists. */
+.next-card__thumb--mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-deep);
+}
+.next-card__thumb--mark img { width: 34%; height: auto; opacity: 0.85; }

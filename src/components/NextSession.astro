@@ -1,6 +1,7 @@
 ---
 import SectionHead from "./SectionHead.astro";
 import "./NextSession.css";
+import { existsSync } from "node:fs";
 
 interface Props {
   next: {
@@ -15,6 +16,10 @@ interface Props {
 
 const { next } = Astro.props;
 const label = `Edition No. ${next.no}`;
+/* Luma artwork lives in /public/luma; until it exists, show the ImmunOS mark. */
+const thumb = existsSync(`public/luma/ImmunOS-luma${next.no}.png`)
+  ? `/luma/ImmunOS-luma${next.no}.png`
+  : null;
 ---
 
 <section class="section-tight next-section">
@@ -41,14 +46,13 @@ const label = `Edition No. ${next.no}`;
         </dl>
       </div>
 
-      <img
-        class="next-card__thumb"
-        src={`/luma/ImmunOS-luma${next.no}.png`}
-        alt=""
-        width="280"
-        height="280"
-        loading="lazy"
-      />
+      {thumb ? (
+        <img class="next-card__thumb" src={thumb} alt="" width="280" height="280" loading="lazy" />
+      ) : (
+        <div class="next-card__thumb next-card__thumb--mark" aria-hidden="true">
+          <img src="/brand/immunos-mark.png" alt="" width="96" height="96" />
+        </div>
+      )}
     </article>
   </div>
 </section>

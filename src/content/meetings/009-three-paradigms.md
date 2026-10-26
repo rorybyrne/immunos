@@ -10,17 +10,14 @@ speakers:
     role: King's College London · Academic Founder, Epsilogen
     href: https://www.linkedin.com/in/sophia-n-karagiannis-9b689414/
     photo: /meetings/speakers/sophia-karagiannis.jpg
-    bio: Program the molecule, borrow the immune system. Antibody isotype engineering — such as IgE — delegates the effector work to the patient's own tissue-resident immune cells.
   - name: Dr. Aneesh Aggarwal
     role: Co-founder & CEO, Akimbo Bio
     href: https://www.linkedin.com/in/aneesh-aggarwal/
     photo: /meetings/speakers/aneesh-aggarwal.jpg
-    bio: Program at runtime, in the patient. In vivo engineering moves the build step into the body, writing specificity into the patient's own cells after dosing.
   - name: Dr. Thomas Fox
     role: Honorary Consultant & Senior Fellow, UCL
     href: https://www.linkedin.com/in/thomas-fox-42791244/
     photo: /meetings/speakers/thomas-fox.jpg
-    bio: Program the cell, verify before release. Bench manufacture — from CRISPR repair of CTLA-4 insufficiency onwards — treats a characterised, releasable product as the point.
 questions:
   - If evolution already placed macrophages in every solid tumour, were 30 years of ex vivo T-cell engineering solving the wrong delivery problem?
   - Is verification the product, or the bottleneck? Does "verified before release" survive contact with an in vivo therapy you can re-dose, titrate and stop?

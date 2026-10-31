@@ -643,6 +643,7 @@ a.aat-logo:hover {
 /* Optical balancing: these files carry extra whitespace / a long wordmark. */
 .aat-logo img[src*="full-circle"] { max-height: 64px; }
 .aat-logo img[src*="litmus"] { max-height: 34px; }
+.aat-logo img[src*="guaranta"] { max-height: 64px; }
 .aat-logo__label {
   font-family: var(--font-body);
   font-size: 17px;

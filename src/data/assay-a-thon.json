@@ -361,6 +361,11 @@
         "href": "",
         "logo": "/partners/flowmatter.svg",
         "label": "Flowmatter"
+      },
+      {
+        "name": "Guaranta",
+        "href": "https://guaranta.co.uk",
+        "logo": "/partners/guaranta.png"
       }
     ]
   },
